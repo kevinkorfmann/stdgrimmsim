@@ -2,11 +2,54 @@
 # We need setup.cfg support, which setuptools introduced in 30.3.0.
 requires = ["setuptools>=30.3.0", "wheel", "setuptools_scm"]
 
-[tool.black]
-line-length = 89
+[project]
+name = "stdgrimmsim"
+dynamic = ["version"]
+description = "A library of population genetic simulation models for German folklore and mythology"
+readme = "README.md"
+license = { text = "GPL-3.0-or-later" }
+requires-python = ">=3.10"
+dependencies = [
+    "msprime>=1.0.4",
+    "attrs>=19.1.0",
+    "appdirs",
+    "humanize",
+    "pyslim>=1.0.4",
+    "numpy",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9",
+    "pytest-cov>=7",
+    "pytest-xdist>=3",
+    "flake8>=7",
+    "coverage>=7",
+    "biopython",
+    "kastore",
+    "scipy",
+    "scikit-allel",
+]
+docs = [
+    "sphinx",
+    "furo",
+    "sphinx-copybutton",
+    "sphinx-issues",
+    "sphinx-argparse",
+    "sphinxcontrib-programoutput",
+    "demesdraw",
+    "matplotlib",
+]
 
 [tool.setuptools_scm]
 # Version from git tags (e.g. v0.1.0 -> 0.1.0). Untagged builds get dev versions.
 version_scheme = "guess-next-dev"
 local_scheme = "no-local-version"
 tag_regex = "^v(?P<version>[0-9]+\\.[0-9]+\\.[0-9]+)$"
+
+[tool.black]
+line-length = 89
+
+[tool.pytest.ini_options]
+addopts = "-n 4"
+testpaths = ["tests"]

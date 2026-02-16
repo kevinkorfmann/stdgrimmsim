@@ -8,6 +8,10 @@ SPHINXBUILD   = sphinx-build
 SOURCEDIR     = .
 BUILDDIR      = _build
 
+# Generate demography schematic PNGs (optional; requires demesdraw: uv sync --extra docs)
+demography-figures:
+	@python generate_demography_figures.py || true
+
 # JK: added this target so that "make" will build the HTML
 html:
 	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)

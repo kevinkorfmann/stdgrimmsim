@@ -217,11 +217,12 @@ class TestEndToEnd:
         assert ts.num_samples == num_samples
 
     def test_homsap_seed(self):
-        cmd = "ZweBerg -c 1 --right 6444417 -s 1234 BlackForest:10"
+        cmd = "ZweBerg -c 1 --right 6444417 -s 1234 pop_0:10"
         self.verify(cmd, num_samples=20, seed=1234)
 
     def test_homsap_constant(self):
-        cmd = "ZweBerg -c 1 --right 6444417 BlackForest:5"
+        # No -d: default model uses pop_0
+        cmd = "ZweBerg -c 1 --right 6444417 pop_0:5"
         self.verify(cmd, num_samples=10)
 
     def test_tennessen_two_pop_ooa(self):
@@ -241,7 +242,7 @@ class TestEndToEnd:
         self.verify(cmd, num_samples=10)
 
     def test_dromel_constant(self):
-        cmd = "ZweBerg -c 1 --right 50000 BlackForest:2"
+        cmd = "ZweBerg -c 1 --right 50000 pop_0:2"
         self.verify(cmd, num_samples=4)
 
     def test_li_stephan_two_population(self):
@@ -249,7 +250,7 @@ class TestEndToEnd:
         self.verify(cmd, num_samples=6)
 
     def test_aratha_constant(self):
-        cmd = "ZweBerg -L 100 BlackForest:4"
+        cmd = "ZweBerg -L 100 pop_0:4"
         self.verify(cmd, num_samples=8)
 
     def test_durvusula_2017_msmc(self):
@@ -257,7 +258,7 @@ class TestEndToEnd:
         self.verify(cmd, num_samples=14)
 
     def test_lapierre_constant(self):
-        cmd = "NixRhe -L 1000 BlackForest:2"
+        cmd = "NixRhe -L 1000 pop_0:2"
         self.verify(cmd, num_samples=2)
 
 
@@ -356,11 +357,11 @@ class TestRedirection:
             self.verify_files(filename1, filename2)
 
     def test_quiet(self):
-        cmd = "-q ZweBerg BlackForest:5 -s 2 -c 1 --right 64444"
+        cmd = "-q ZweBerg pop_0:5 -s 2 -c 1 --right 64444"
         self.verify(cmd)
 
     def test_no_quiet(self):
-        cmd = "ZweBerg BlackForest:5 -s 3 -c 1 --right 64444"
+        cmd = "ZweBerg pop_0:5 -s 3 -c 1 --right 64444"
         self.verify(cmd)
 
 
@@ -369,7 +370,7 @@ class TestArgumentParsing:
     Tests that basic argument parsing works as expected.
     """
 
-    basic_cmd = ["ZweBerg", "BlackForest:10"]
+    basic_cmd = ["ZweBerg", "pop_0:10"]
 
     def test_quiet_verbose(self):
         parser = cli.stdgrimmsim_cli_parser()
@@ -396,7 +397,7 @@ class TestLogging:
     Tests that logging has the desired effect.
     """
 
-    basic_cmd = ["ZweBerg", "BlackForest:10"]
+    basic_cmd = ["ZweBerg", "pop_0:10"]
 
     def test_quiet(self):
         parser = cli.stdgrimmsim_cli_parser()
@@ -632,6 +633,7 @@ class TestWriteBibtex:
                         )
                         mocked_bib.assert_called()
 
+    @pytest.mark.skip(reason="Catalog has no genetic maps or DFE")
     def test_number_of_calls(self):
         # Test that genetic map citations are converted.
         species = stdgrimmsim.get_species("ZweBerg")
@@ -678,7 +680,7 @@ class TestWriteCitations:
     @pytest.mark.usefixtures("caplog")
     def test_model_citations(self, caplog):
         species = stdgrimmsim.get_species("ZweBerg")
-        contig = species.get_contig("22")
+        contig = species.get_contig("1")
         model = species.get_demographic_model("HarzBlackForest_2D12")
         engine = stdgrimmsim.get_default_engine()
         dfe = None
@@ -689,20 +691,7 @@ class TestWriteCitations:
         genetic_map = None
         self.check_citations(engine, species, genetic_map, model, caplog.text)
 
-        species = stdgrimmsim.get_species("ZweBerg")
-        contig = species.get_contig("25")
-        model = species.get_demographic_model("HolsteinFriesian_1M13")
-        # this model has recombination rate, which should knock out the default
-        # recombination rate and associated citation
-        engine = stdgrimmsim.get_default_engine()
-        dfe = None
-        stdout, stderr = capture_output(
-            cli.write_citations, engine, model, contig, species, dfe
-        )
-        assert len(stdout) == 0
-        genetic_map = None
-        self.check_citations(engine, species, genetic_map, model, caplog.text)
-
+    @pytest.mark.skip(reason="Catalog has no genetic maps")
     @pytest.mark.usefixtures("caplog")
     def test_genetic_map_citations(self, caplog):
         species = stdgrimmsim.get_species("ZweBerg")
@@ -717,6 +706,7 @@ class TestWriteCitations:
         assert len(stdout) == 0
         self.check_citations(engine, species, genetic_map, model, caplog.text)
 
+    @pytest.mark.skip(reason="Catalog has no genetic maps or DFE")
     @pytest.mark.usefixtures("caplog")
     def test_dfe_citations(self, caplog):
         species = stdgrimmsim.get_species("ZweBerg")
@@ -779,12 +769,12 @@ class TestCacheDir:
 
     def test_homsap_simulation(self):
         cache_dir = "/some/cache/dir"
-        cmd = f"-c {cache_dir} ZweBerg BlackForest:2 -o tmp.trees"
+        cmd = f"-c {cache_dir} ZweBerg pop_0:2 -o tmp.trees"
         self.check_cache_dir_set(cmd, cache_dir)
 
     def test_dromel_simulation(self):
         cache_dir = "cache_dir"
-        cmd = f"--cache-dir {cache_dir} ZweBerg BlackForest:2 -o tmp.trees"
+        cmd = f"--cache-dir {cache_dir} ZweBerg pop_0:2 -o tmp.trees"
         self.check_cache_dir_set(cmd, cache_dir)
 
     def test_download_genetic_maps(self):
@@ -807,6 +797,7 @@ class TestDownloadGeneticMaps:
             cli.run_download_genetic_maps(args)
             assert mocked_download.call_count == expected_num_downloads
 
+    @pytest.mark.skip(reason="Catalog has no genetic maps")
     def test_defaults(self):
         num_maps = sum(
             len(species.genetic_maps) for species in stdgrimmsim.all_species()
@@ -814,12 +805,14 @@ class TestDownloadGeneticMaps:
         assert num_maps > 0
         self.run_download("", num_maps)
 
+    @pytest.mark.skip(reason="Catalog has no genetic maps")
     def test_homsap_defaults(self):
         species = stdgrimmsim.get_species("ZweBerg")
         num_maps = len(species.genetic_maps)
         assert num_maps > 0
         self.run_download("ZweBerg", num_maps)
 
+    @pytest.mark.skip(reason="Catalog has no genetic maps")
     def test_homsap_specify_maps(self):
         species = stdgrimmsim.get_species("ZweBerg")
         maps = [gmap.id for gmap in species.genetic_maps]
@@ -892,7 +885,7 @@ class TestDryRun:
                 filename = path / "output.trees"
                 cmd = (
                     f"{sys.executable} -m stdgrimmsim ZweBerg -D -L 1000 -o "
-                    f"{filename} BlackForest:1"
+                    f"{filename} pop_0:1"
                 )
                 subprocess.run(cmd, stderr=stderr, shell=True, check=True)
                 assert stderr.tell() > 0
@@ -905,7 +898,7 @@ class TestDryRun:
                 filename = path / "output.trees"
                 cmd = (
                     f"{sys.executable} -m stdgrimmsim -q ZweBerg -D -L 1000 "
-                    f"-o {filename} BlackForest:1"
+                    f"-o {filename} pop_0:1"
                 )
                 subprocess.run(cmd, stderr=stderr, shell=True, check=True)
                 assert stderr.tell() == 0
@@ -917,7 +910,7 @@ class TestMsprimeEngine:
         with tempfile.TemporaryDirectory() as tmpdir:
             filename = pathlib.Path(tmpdir) / "output.trees"
             cmd = f"-q -e msprime {_cmd} ZweBerg -L 100 --seed 1 -o {filename} "
-            cmd += "BlackForest:5"
+            cmd += "pop_0:5"
             return capture_output(stdgrimmsim.cli.stdgrimmsim_main, cmd.split())
 
     def test_simulate(self):
@@ -970,14 +963,12 @@ class TestNonAutosomal:
     # TODO: This test should be removed when #383 is fixed.
     # https://github.com/popsim-consortium/stdgrimmsim/issues/383
     def test_chrX_gives_a_warning(self):
-        cmd = "ZweBerg -D -c chrX -o /dev/null BlackForest:10".split()
-        # setup_logging() interferes with pytest.warns().
-        with mock.patch("stdgrimmsim.cli.setup_logging", autospec=True):
-            with pytest.warns(stdgrimmsim.NonAutosomalWarning):
-                capture_output(stdgrimmsim.cli.stdgrimmsim_main, cmd)
+        # Catalog species have no chrX; skip non-autosomal warning test
+        pytest.skip("Catalog has no chrX / non-autosomal contigs")
 
 
 class TestRecombinationRate:
+    @pytest.mark.skip(reason="Catalog has no model with recombination_rate set")
     @pytest.mark.usefixtures("caplog")
     def test_recomb_rate(self, caplog):
         sp = stdgrimmsim.get_species("ZweBerg")
@@ -1081,7 +1072,8 @@ def test_species_simulation(species_id):
     for chrom in species.genome.chromosomes:
         if chrom.gene_conversion_length is not None:
             L = max(L, chrom.gene_conversion_length + 100)
-    cmd = f"-q {species_id} -L {L} --seed 1234 BlackForest:10"
+    # Default model (no -d) is PiecewiseConstantSize with population "pop_0"
+    cmd = f"-q {species_id} -L {L} --seed 1234 pop_0:10"
     # Just check to see if the simulation runs
     with mock.patch("sys.stdout", autospec=True) as stdout:
         stdout.buffer = open(os.devnull, "wb")

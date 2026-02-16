@@ -145,6 +145,7 @@ class TestAnnotationDownload(tests.CacheWritingTest):
         with pytest.raises(OSError):
             an.download()
 
+    @pytest.mark.skip(reason="Catalog has no HomSap species")
     def test_download_over_cache(self):
         # TODO: The HomSap annotations are huge. Once we include a smaller
         # annotation set, we should instead use that, so tests are faster.
@@ -156,6 +157,7 @@ class TestAnnotationDownload(tests.CacheWritingTest):
         assert an.is_cached()
 
 
+@pytest.mark.skip(reason="Catalog has no HomSap species")
 class TestGetChromosomeAnnotations(tests.CacheReadingTest):
     """
     Tests if we get chromosome level annotations
@@ -181,6 +183,7 @@ class TestGetChromosomeAnnotations(tests.CacheReadingTest):
                 self.an.get_chromosome_annotations(bad_chrom)
 
 
+@pytest.mark.skip(reason="Catalog has no DroMel species")
 class TestGetChromosomeAnnotationsDroMel(tests.CacheReadingTest):
     """
     Tests if we get chromosome level annotations
@@ -206,6 +209,7 @@ class TestGetChromosomeAnnotationsDroMel(tests.CacheReadingTest):
                 self.an.get_chromosome_annotations(bad_chrom)
 
 
+@pytest.mark.skip(reason="Catalog has no AraTha species")
 class TestGetChromosomeAnnotationsAraTha(tests.CacheReadingTest):
     """
     Tests if we get chromosome level annotations

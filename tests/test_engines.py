@@ -62,12 +62,12 @@ class TestEngineAPI:
 )
 class TestBehaviour:
     def test_simulate_nonexistent_param(self):
-        species = stdgrimmsim.get_species("DagHyd")
-        model = species.get_demographic_model("InnsmouthDecline_1M27")
+        species = stdgrimmsim.get_species("ZweBerg")
+        model = species.get_demographic_model("BlackForest_1D12")
         good_kwargs = dict(
             demographic_model=model,
             contig=species.get_contig("1"),
-            samples={"DeepOnes": 5},
+            samples={"BlackForest": 5},
             dry_run=True,
         )
         bad_kwargs = good_kwargs.copy()
@@ -80,8 +80,8 @@ class TestBehaviour:
                 engine.simulate(**bad_kwargs)
 
     def test_required_params(self):
-        species = stdgrimmsim.get_species("DagHyd")
-        model = species.get_demographic_model("InnsmouthDecline_1M27")
+        species = stdgrimmsim.get_species("ZweBerg")
+        model = species.get_demographic_model("BlackForest_1D12")
         contig = (species.get_contig("1"),)
         for engine in stdgrimmsim.all_engines():
             if engine.id == "slim":
@@ -90,10 +90,10 @@ class TestBehaviour:
                 engine.simulate(model, contig)
 
     def test_msprime_kwargs(self):
-        species = stdgrimmsim.get_species("DagHyd")
-        model = species.get_demographic_model("InnsmouthDecline_1M27")
+        species = stdgrimmsim.get_species("ZweBerg")
+        model = species.get_demographic_model("BlackForest_1D12")
         contig = species.get_contig("1", right=5e5)
-        samples = {"DeepOnes": 5}
+        samples = {"BlackForest": 5}
         engine = stdgrimmsim.get_engine("msprime")
         sim_arg = engine.simulate(
             model, contig, samples, record_full_arg=True, random_seed=1
@@ -101,10 +101,10 @@ class TestBehaviour:
         assert any(msprime.NODE_IS_RE_EVENT == sim_arg.tables.nodes.flags)
 
     def test_msprime_seed(self):
-        species = stdgrimmsim.get_species("DagHyd")
-        model = species.get_demographic_model("InnsmouthDecline_1M27")
+        species = stdgrimmsim.get_species("ZweBerg")
+        model = species.get_demographic_model("BlackForest_1D12")
         contig = species.get_contig("1", right=5e5)
-        samples = {"DeepOnes": 5}
+        samples = {"BlackForest": 5}
         engine = stdgrimmsim.get_engine("msprime")
         with pytest.raises(ValueError):
             engine.simulate(model, contig, samples, seed=1, random_seed=1)
@@ -113,9 +113,9 @@ class TestBehaviour:
         assert sim_seed.tables.edges == sim_random_seed.tables.edges
 
     def test_non_neutral_contig(self):
-        species = stdgrimmsim.get_species("DagHyd")
-        model = species.get_demographic_model("InnsmouthDecline_1M27")
-        samples = {"DeepOnes": 5}
+        species = stdgrimmsim.get_species("ZweBerg")
+        model = species.get_demographic_model("BlackForest_1D12")
+        samples = {"BlackForest": 5}
         contig = stdgrimmsim.Contig.basic_contig(length=100)
         contig.clear_dfes()
         props = [1]
@@ -163,7 +163,7 @@ class TestBehaviour:
 
     def test_msprime_bad_samples(self):
         engine = stdgrimmsim.get_engine("msprime")
-        species = stdgrimmsim.get_species("DagHyd")
+        species = stdgrimmsim.get_species("ZweBerg")
         contig = species.get_contig("1")
         model = stdgrimmsim.PiecewiseConstantSize(species.population_size)
         samples = [1, 2, ["foo"]]

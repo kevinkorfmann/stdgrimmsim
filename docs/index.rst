@@ -60,6 +60,7 @@ By category:
    introduction
    installation
    catalog
+   all_models
    tutorial
    cli_arguments
    api

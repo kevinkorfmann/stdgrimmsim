@@ -10,6 +10,13 @@ Each has made-up but population-genetically plausible genomes and demographic
 histories tied to geographic regions (Black Forest, Harz, Rhine, Bavaria,
 Prussia, Saxony, etc.) and to Grimm fairy tales where relevant.
 
+For a compact list of all 150 models with links into this page, see
+:doc:`All demographic models <all_models>` (also in the sidebar).
+
+Demography schematic diagrams (one per model) are shown below when available.
+To generate them, run from the repo root: ``python docs/generate_demography_figures.py``
+(requires ``demesdraw``; install with ``uv sync --extra docs``).
+
 1. Which **chromosome** (:class:`.Genome` object)?
 2. Which **model of demographic history** (:class:`.DemographicModel` object)?
 

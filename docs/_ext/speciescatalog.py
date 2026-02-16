@@ -7,13 +7,20 @@ Usage in rst::
 
 This auto-generates documentation for the given species, including genome
 assembly info, chromosomes, and all demographic models.
+Demography schematic PNGs (if present) are included; generate them with::
+
+    python docs/generate_demography_figures.py
 """
 
 import stdgrimmsim
+from pathlib import Path
 from docutils import nodes
 from docutils.parsers.rst import Directive
 from docutils.statemachine import StringList
 from sphinx.util.nodes import nested_parse_with_titles
+
+# Directory under docs/_static/demography/ for PNGs (relative to docs/)
+DEMOGRAPHY_IMAGES_DIR = Path(__file__).resolve().parent.parent / "_static" / "demography"
 
 
 def _make_field_list(items):
@@ -75,8 +82,23 @@ def _build_species_rst(species_id):
     lines.append("")
 
     for model in species.demographic_models:
-        lines.append(f"**{model.id}** — {model.description}")
+        # Anchor and subsection so the model appears in the right-hand "On this page" TOC
+        anchor = f"{species_id}-{model.id}"
+        lines.append(f".. _`{anchor}`:")
         lines.append("")
+        lines.append(model.id)
+        lines.append("-" * len(model.id))
+        lines.append("")
+        lines.append(model.description)
+        lines.append("")
+        # Demography schematic (if PNG was generated)
+        png_path = DEMOGRAPHY_IMAGES_DIR / species_id / f"{model.id}.png"
+        if png_path.is_file():
+            rel_path = f"_static/demography/{species_id}/{model.id}.png"
+            lines.append(f".. image:: {rel_path}")
+            lines.append("   :alt: Demography schematic")
+            lines.append("   :width: 400px")
+            lines.append("")
         # Population list
         pop_names = ", ".join(
             f"``{p.name}``" for p in model.populations
@@ -119,8 +141,55 @@ class SpeciesCatalogDirective(Directive):
         return node.children
 
 
+def _build_all_models_rst():
+    """Build rst content for the "All demographic models" page."""
+    lines = [
+        "This page lists every demographic model in the catalog. Use the links to jump to the full description in the :doc:`Catalog <catalog>`.",
+        "",
+        ".. list-table:: All demographic models",
+        "   :header-rows: 1",
+        "   :widths: 15 25 50",
+        "",
+        "   * - Species",
+        "     - Model",
+        "     - Description",
+        "",
+    ]
+    for species in stdgrimmsim.all_species():
+        for model in species.demographic_models:
+            anchor = f"{species.id}-{model.id}"
+            # Link text: model id, target: catalog section
+            link = f":ref:`{model.id} <{anchor}>`"
+            # Short description (first sentence or first 80 chars)
+            desc = model.description.split(".")[0].strip()
+            if len(desc) > 75:
+                desc = desc[:72] + "..."
+            lines.append(f"   * - {species.id}")
+            lines.append(f"     - {link}")
+            lines.append(f"     - {desc}")
+            lines.append("")
+    return lines
+
+
+class AllModelsDirective(Directive):
+    """Directive that emits a table of all species and demographic models with links to the catalog."""
+
+    required_arguments = 0
+    optional_arguments = 0
+    has_content = False
+
+    def run(self):
+        rst_lines = _build_all_models_rst()
+        string_list = StringList(rst_lines, source="allmodels")
+        node = nodes.section()
+        node.document = self.state.document
+        nested_parse_with_titles(self.state, string_list, node)
+        return node.children
+
+
 def setup(app):
     app.add_directive("speciescatalog", SpeciesCatalogDirective)
+    app.add_directive("allmodels", AllModelsDirective)
     return {
         "version": "0.1",
         "parallel_read_safe": True,

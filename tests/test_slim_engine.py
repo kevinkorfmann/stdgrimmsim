@@ -35,9 +35,9 @@ class TestAPI:
     def test_bad_params(self):
         engine = stdgrimmsim.get_engine("slim")
         species = stdgrimmsim.get_species("ZweBerg")
-        contig = species.get_contig("chr1")
+        contig = species.get_contig("1")
         model = stdgrimmsim.PiecewiseConstantSize(species.population_size)
-        samples = {"BlackForest": 5}
+        samples = {"pop_0": 5}
 
         for scaling_factor in (0, -1, -1e-6):
             with pytest.raises(ValueError):
@@ -62,7 +62,7 @@ class TestAPI:
     def test_bad_samples(self):
         engine = stdgrimmsim.get_engine("slim")
         species = stdgrimmsim.get_species("ZweBerg")
-        contig = species.get_contig("chr1")
+        contig = species.get_contig("1")
         model = stdgrimmsim.PiecewiseConstantSize(species.population_size)
         samples = [1, 2, ["foo"]]
         with pytest.raises(ValueError, match="Samples must be a dict"):
@@ -101,10 +101,10 @@ class TestAPI:
     def test_script_generation(self):
         engine = stdgrimmsim.get_engine("slim")
         species = stdgrimmsim.get_species("ZweBerg")
-        contig = species.get_contig("chr1")
+        contig = species.get_contig("1")
 
         model = stdgrimmsim.PiecewiseConstantSize(species.population_size)
-        samples = {"BlackForest": 5}
+        samples = {"pop_0": 5}
         out, _ = capture_output(
             engine.simulate,
             demographic_model=model,
@@ -115,15 +115,7 @@ class TestAPI:
         assert "community.registerLateEvent" in out
 
         model = species.get_demographic_model("HarzBlackForest_2D12")
-        samples = {
-            "Mbuti": 5,
-            "LBK": 10,
-            "Sardinian": 15,
-            "Loschbour": 20,
-            "MA1": 25,
-            "Han": 30,
-            "UstIshim": 35,
-        }
+        samples = {"BlackForest": 5, "Harz": 10}
         out, _ = capture_output(
             engine.simulate,
             demographic_model=model,
@@ -134,7 +126,7 @@ class TestAPI:
         assert "community.registerLateEvent" in out
 
         model = species.get_demographic_model("BlackForest_1D12")
-        samples = {"AFR": 10, "EUR": 10, "ASIA": 10}
+        samples = {"BlackForest": 30}
         out, _ = capture_output(
             engine.simulate,
             demographic_model=model,
@@ -144,13 +136,14 @@ class TestAPI:
         )
         assert "community.registerLateEvent" in out
 
+    @pytest.mark.skip(reason="Catalog has no genetic maps")
     @pytest.mark.filterwarnings("ignore: Genetic map.*is longer than chromosome length")
     def test_recombination_map(self):
         engine = stdgrimmsim.get_engine("slim")
         species = stdgrimmsim.get_species("ZweBerg")
         contig = species.get_contig("chr21", genetic_map="HapMapII_GRCh37")
         model = stdgrimmsim.PiecewiseConstantSize(100)
-        samples = {"BlackForest": 5}
+        samples = {"pop_0": 5}
         engine.simulate(
             demographic_model=model,
             contig=contig,
@@ -164,7 +157,7 @@ class TestAPI:
         species = stdgrimmsim.get_species("ZweBerg")
         contig = species.get_contig(length=26976)
         model = stdgrimmsim.PiecewiseConstantSize(species.population_size)
-        samples = {"BlackForest": 5}
+        samples = {"pop_0": 5}
         ts = engine.simulate(
             demographic_model=model,
             contig=contig,
@@ -181,7 +174,7 @@ class TestAPI:
         species = stdgrimmsim.get_species("ZweBerg")
         contig = species.get_contig(length=26976)
         model = stdgrimmsim.PiecewiseConstantSize(species.population_size)
-        samples = {"BlackForest": 5}
+        samples = {"pop_0": 5}
         for v in [0, 1, 2, 3]:
             ts = engine.simulate(
                 demographic_model=model,
@@ -431,19 +424,19 @@ class TestAPI:
 
 class TestCLI:
     def docmd(self, _cmd):
-        cmd = (f"-q -e slim --slim-burn-in 0 {_cmd} -l 0.001 -c chr1 -s 1234").split()
+        cmd = (f"-q -e slim --slim-burn-in 0 {_cmd} -l 0.001 -c 1 -s 1234").split()
         return capture_output(stdgrimmsim.cli.stdgrimmsim_main, cmd)
 
     def test_script_generation(self):
-        out, _ = self.docmd("--slim-script ZweBerg BlackForest:5")
+        out, _ = self.docmd("--slim-script ZweBerg pop_0:5")
         assert "community.registerLateEvent" in out
 
         # msprime.MassMigration demographic events, with proportion<1.0
         # low level migration
-        out, _ = self.docmd("--slim-script ZweBerg -d HarzBlackForest_2D12 Mbuti:5")
+        out, _ = self.docmd("--slim-script ZweBerg -d HarzBlackForest_2D12 BlackForest:5")
         assert "community.registerLateEvent" in out
         # simultaneous mass migrations, with proportions summing to 1.0
-        out, _ = self.docmd("--slim-script ZweBerg -d BlackForest_1D12 AFR:5")
+        out, _ = self.docmd("--slim-script ZweBerg -d BlackForest_1D12 BlackForest:5")
         assert "community.registerLateEvent" in out
 
     @pytest.mark.filterwarnings("ignore::stdgrimmsim.SLiMScalingFactorWarning")
@@ -455,7 +448,7 @@ class TestCLI:
         fname = tmp_path / "sim1.trees"
         self.docmd(
             f"--slim-scaling-factor 20 --slim-path {slim_path} ZweBerg "
-            f"BlackForest:5 -o {fname}"
+            f"pop_0:5 -o {fname}"
         )
         ts = tskit.load(fname)
         assert ts.num_samples == 10
@@ -467,7 +460,7 @@ class TestCLI:
             os.environ["SLIM"] = saved_slim_env
 
         fname = tmp_path / "sim2.trees"
-        self.docmd(f"--slim-scaling-factor 20 ZweBerg BlackForest:5 -o {fname}")
+        self.docmd(f"--slim-scaling-factor 20 ZweBerg pop_0:5 -o {fname}")
         ts = tskit.load(fname)
         assert ts.num_samples == 10
 
@@ -475,8 +468,8 @@ class TestCLI:
         fname = tmp_path / "sim3.trees"
         cmd = (
             "-q -e slim --slim-scaling-factor 20 --slim-burn-in 0 "
-            f"ZweBerg -o {fname} -l 0.001 -c chr1 -s 1234 "
-            "-d BlackForest_1D12 YRI:0 CEU:0 CHB:4"
+            f"ZweBerg -o {fname} -l 0.001 -c 1 -s 1234 "
+            "-d BlackForest_1D12 BlackForest:4"
         ).split()
         capture_output(stdgrimmsim.cli.stdgrimmsim_main, cmd)
         ts = tskit.load(fname)
@@ -765,7 +758,7 @@ class TestCLI:
             proc.returncode = 0
             proc.stdout = io.StringIO()
             proc.stderr = io.StringIO()
-            self.docmd(f"ZweBerg BlackForest:5 --dry-run -o {fname}")
+            self.docmd(f"ZweBerg pop_0:5 --dry-run -o {fname}")
         mocked_popen.assert_called_once()
         slim_path = os.environ.get("SLIM", "slim")
         assert slim_path in mocked_popen.call_args[0][0]
@@ -778,7 +771,7 @@ class TestCLI:
 
         os.environ["SLIM"] = "nonexistent"
         with pytest.raises(FileNotFoundError):
-            self.docmd("ZweBerg BlackForest:5")
+            self.docmd("ZweBerg pop_0:5")
 
         if saved_slim_env is None:
             del os.environ["SLIM"]
@@ -789,7 +782,7 @@ class TestCLI:
         saved_slim_env = os.environ.get("SLIM")
 
         with pytest.raises(FileNotFoundError):
-            self.docmd("--slim-path nonexistent ZweBerg BlackForest:5")
+            self.docmd("--slim-path nonexistent ZweBerg pop_0:5")
 
         if saved_slim_env is None:
             del os.environ["SLIM"]
@@ -1164,12 +1157,13 @@ class TestRecombinationMap(PiecewiseConstantSizeMixin):
         assert np.all(rm.rate[i - 1] > 0)
 
     @pytest.mark.parametrize("Q", [1, 12])
+    @pytest.mark.skip(reason="Catalog has no genetic maps")
     def test_chr1(self, Q):
         engine = stdgrimmsim.get_engine("slim")
         species = stdgrimmsim.get_species("ZweBerg")
         contig = species.get_contig("chr1", genetic_map="HapMapII_GRCh38")
         model = stdgrimmsim.PiecewiseConstantSize(100)
-        samples = {"BlackForest": 5}
+        samples = {"pop_0": 5}
         ts = engine.simulate(
             demographic_model=model,
             contig=contig,
@@ -1192,7 +1186,7 @@ class TestRecombinationMap(PiecewiseConstantSizeMixin):
             rate=np.array([0.0, 0.1, 0.0]),
         )
         model = stdgrimmsim.PiecewiseConstantSize(100)
-        samples = {"BlackForest": 5}
+        samples = {"pop_0": 5}
         ts = engine.simulate(
             demographic_model=model,
             contig=contig,
@@ -1204,12 +1198,13 @@ class TestRecombinationMap(PiecewiseConstantSizeMixin):
         self.verify_recombination_map(contig, ts)
         assert list(ts.breakpoints()) == [0.0, midpoint, contig.length]
 
+    @pytest.mark.skip(reason="Catalog has no DFE")
     def test_not_simulated_outside_region(self):
         # test that when left, right are specified
         # we legit don't simulate anything outside that region
         species = stdgrimmsim.get_species("ZweBerg")
         model = stdgrimmsim.PiecewiseConstantSize(100)
-        samples = {"BlackForest": 50}
+        samples = {"pop_0": 50}
 
         left, right = 100000, 900000
         contig = species.get_contig("1", left=left, right=right)
@@ -3185,7 +3180,7 @@ class TestPopSizes:
 
     def verify_pop_sizes(self, model, samples, generation_time=1, Q=1):
         species = stdgrimmsim.get_species("ZweBerg")
-        contig = species.get_contig("chr17", left=1e7, right=1e7 + 1e4)
+        contig = species.get_contig("1", left=1e7, right=1e7 + 1e4)
         engine = stdgrimmsim.get_engine("slim")
         sp_model = stdgrimmsim.DemographicModel(
             id="test",
@@ -3284,7 +3279,7 @@ class TestPloidy:
         contig = stdgrimmsim.Contig.basic_contig(length=1000, ploidy=1)
         model = stdgrimmsim.PiecewiseConstantSize(N)
         with caplog.at_level(logging.DEBUG):
-            engine.simulate(model, contig, samples={"BlackForest": 2}, verbosity=2)
+            engine.simulate(model, contig, samples={"pop_0": 2}, verbosity=2)
         log_str = " ".join([rec.getMessage() for rec in caplog.records])
         # match: "1: p = sim.addSubpop(0, <SLiM population size>);"
         extract_ne = re.compile(".+1: p = sim.addSubpop\\(0, ([0-9]+)\\).+")
@@ -3302,7 +3297,7 @@ class TestPloidy:
         model = stdgrimmsim.PiecewiseConstantSize(N)
         with caplog.at_level(logging.DEBUG):
             engine.simulate(
-                model, contig, samples={"BlackForest": 2}, verbosity=2, seed=9
+                model, contig, samples={"pop_0": 2}, verbosity=2, seed=9
             )
         log_str = " ".join([rec.getMessage() for rec in caplog.records])
         # match: "1: p = sim.addSubpop(0, <SLiM population size>);"
@@ -3318,7 +3313,7 @@ class TestPloidy:
         model = stdgrimmsim.PiecewiseConstantSize(N)
         for ploidy in [1, 2]:
             contig = stdgrimmsim.Contig.basic_contig(length=1000, ploidy=ploidy)
-            sample_sets = model.get_sample_sets({"BlackForest": 2}, ploidy=contig.ploidy)
+            sample_sets = model.get_sample_sets({"pop_0": 2}, ploidy=contig.ploidy)
             rate_map = stdgrimmsim.get_slim_mutation_rate_map(contig)
             with open(os.devnull, "w") as scriptfile:
                 recap_epoch = stdgrimmsim.slim_makescript(
@@ -3370,8 +3365,8 @@ class TestSpeciesProperties:
         engine = stdgrimmsim.get_engine("slim")
         for sp, ans in [("ZweBerg", True), ("ZweBerg", False)]:
             species = stdgrimmsim.get_species(sp)
-            contig = species.get_contig("chr1", left=1e7, right=1e7 + 1e4)
-            ts = engine.simulate(model, contig, samples={"BlackForest": 3}, seed=7)
+            contig = species.get_contig("1", left=1e7, right=1e7 + 1e4)
+            ts = engine.simulate(model, contig, samples={"pop_0": 3}, seed=7)
             assert ts.metadata["SLiM"]["separate_sexes"] is ans
 
     def test_separate_sexes_default(self):
@@ -3379,14 +3374,14 @@ class TestSpeciesProperties:
         model = stdgrimmsim.PiecewiseConstantSize(N)
         engine = stdgrimmsim.get_engine("slim")
         contig1 = stdgrimmsim.Contig.basic_contig(length=1000, ploidy=2)
-        ts = engine.simulate(model, contig1, samples={"BlackForest": 3}, seed=7)
+        ts = engine.simulate(model, contig1, samples={"pop_0": 3}, seed=7)
         # default
         assert ts.metadata["SLiM"]["separate_sexes"] is False
         contig1.species.separate_sexes = True
-        ts = engine.simulate(model, contig1, samples={"BlackForest": 3}, seed=7)
+        ts = engine.simulate(model, contig1, samples={"pop_0": 3}, seed=7)
         assert ts.metadata["SLiM"]["separate_sexes"] is True
         # check that each contig gets its own Species, so modifying one
         # doesn't change the other's properties
         contig2 = stdgrimmsim.Contig.basic_contig(length=1000, ploidy=2)
-        ts = engine.simulate(model, contig2, samples={"BlackForest": 3}, seed=7)
+        ts = engine.simulate(model, contig2, samples={"pop_0": 3}, seed=7)
         assert ts.metadata["SLiM"]["separate_sexes"] is False

@@ -210,7 +210,7 @@ class TestContig(object):
                 assert contig.is_neutral is (neutral and dist == "f")
 
     def test_chromosome_segment(self):
-        species = stdgrimmsim.get_species("DagHyd")
+        species = stdgrimmsim.get_species("ZweBerg")
         chrom = species.genome.chromosomes[0]
         length = chrom.length
         for interval in [(0, 1341), (5020, 12850), (4249, length), (0, length)]:
@@ -225,7 +225,7 @@ class TestContig(object):
     def test_not_simulated_outside_region(self):
         # test that when left, right are specified
         # we legit don't simulate anything outside that region
-        species = stdgrimmsim.get_species("DagHyd")
+        species = stdgrimmsim.get_species("ZweBerg")
         model = stdgrimmsim.PiecewiseConstantSize(100)
         samples = {"pop_0": 50}
 
@@ -286,7 +286,7 @@ class TestContig(object):
             (left + offset, left + 2 * offset),
             (right - offset, right),
         ]
-        species = stdgrimmsim.get_species("DagHyd")
+        species = stdgrimmsim.get_species("ZweBerg")
         contig_inclusion = species.get_contig(
             chromosome=chr_id,
             left=left,
@@ -319,7 +319,7 @@ class TestContig(object):
 
     def test_add_single_site_coordinate_system(self):
         chrom = "2"
-        species = stdgrimmsim.get_species("DagHyd")
+        species = stdgrimmsim.get_species("ZweBerg")
         interval = [100000, 200000]
         original_sweep_coord = 100100
         bad_sweep_coord = original_sweep_coord - interval[0]
@@ -338,7 +338,7 @@ class TestContig(object):
             )
 
     def test_original_coordinates(self):
-        species = stdgrimmsim.get_species("DagHyd")
+        species = stdgrimmsim.get_species("ZweBerg")
         contig = species.get_contig("2", left=10000, right=392342)
         c, x, y = contig.coordinates
         with pytest.warns(
@@ -351,7 +351,7 @@ class TestContig(object):
 
     def test_add_dfe_coordinate_system(self):
         chrom = "2"
-        species = stdgrimmsim.get_species("DagHyd")
+        species = stdgrimmsim.get_species("ZweBerg")
         contig_interval = [200000, 300000]
         original_dfe_interval = np.array([[190000, 210000], [290000, 310000]])
         bad_dfe_interval = np.array([[0, 10000], [90000, 100000]])
@@ -373,7 +373,7 @@ class TestContig(object):
 
     def test_dfe_breakpoints_coordinate_system(self):
         chrom = "2"
-        species = stdgrimmsim.get_species("DagHyd")
+        species = stdgrimmsim.get_species("ZweBerg")
         contig_interval = [200000, 300000]
         dfe_interval = [[190000, 210000], [290000, 310000]]
         contig = species.get_contig(
@@ -397,7 +397,7 @@ class TestContig(object):
     @pytest.mark.filterwarnings("ignore::stdgrimmsim.DeprecatedFeatureWarning")
     def test_chromosome_segment_fails_with_length_multiplier(self):
         chrom = "2"
-        species = stdgrimmsim.get_species("DagHyd")
+        species = stdgrimmsim.get_species("ZweBerg")
         with pytest.raises(ValueError, match="specifying left or right"):
             species.get_contig(
                 chrom,
@@ -407,7 +407,7 @@ class TestContig(object):
             )
 
     def test_no_chromosome_segment_with_generic_contig(self):
-        species = stdgrimmsim.get_species("DagHyd")
+        species = stdgrimmsim.get_species("ZweBerg")
         interval = [200000, 300000]
         with pytest.raises(ValueError, match="coordinates with generic contig"):
             species.get_contig(
@@ -417,7 +417,7 @@ class TestContig(object):
 
     def test_chromosome_segment_exceeds_length(self):
         chr_id = "1"
-        species = stdgrimmsim.get_species("DagHyd")
+        species = stdgrimmsim.get_species("ZweBerg")
         # Chromosome 1 length 200e6; use invalid intervals
         for interval in [[250e6, 300e6], [80e6, 250e6], [-1, 10e6]]:
             with pytest.raises(ValueError, match="the length of"):
@@ -436,7 +436,7 @@ class TestContig(object):
         assert contig.species.separate_sexes is False
 
     def test_species_property(self):
-        species = stdgrimmsim.get_species("DagHyd")
+        species = stdgrimmsim.get_species("ZweBerg")
         contig = species.get_contig("2")
         assert contig.species == species
 

@@ -36,7 +36,7 @@ class TestMasking:
 
     @pytest.mark.filterwarnings("ignore::stdgrimmsim.DeprecatedFeatureWarning")
     def test_length_interval_invalid(self):
-        species = stdgrimmsim.get_species("DagHyd")
+        species = stdgrimmsim.get_species("ZweBerg")
         with pytest.raises(ValueError, match="Cannot use length multiplier"):
             species.get_contig("1", length_multiplier=0.1, inclusion_mask="test.bed")
 
@@ -64,21 +64,22 @@ class TestMasking:
             assert i1[1] == i2[1]
 
     def test_mask_from_intervals(self):
-        species = stdgrimmsim.get_species("DagHyd")
-        contig = species.get_contig("1", exclusion_mask=[(0, 16.5e6)])
+        species = stdgrimmsim.get_species("ZweBerg")
+        # ZweBerg chr 1 length is 22e6
+        contig = species.get_contig("1", exclusion_mask=[(0, 10e6)])
         assert contig.inclusion_mask is None
         assert contig.exclusion_mask[0][0] == 0
-        assert contig.exclusion_mask[0][1] == 16.5e6
-        contig = species.get_contig("1", inclusion_mask=[(16.5e6, 45e6)])
-        assert contig.inclusion_mask[0][0] == 16.5e6
-        assert contig.inclusion_mask[0][1] == 45e6
+        assert contig.exclusion_mask[0][1] == 10e6
+        contig = species.get_contig("1", inclusion_mask=[(10e6, 20e6)])
+        assert contig.inclusion_mask[0][0] == 10e6
+        assert contig.inclusion_mask[0][1] == 20e6
         assert contig.exclusion_mask is None
 
     def test_multiple_masks(self):
-        species = stdgrimmsim.get_species("DagHyd")
+        species = stdgrimmsim.get_species("ZweBerg")
         with pytest.raises(ValueError):
             species.get_contig(
-                "1", exclusion_mask=[(0, 16.5e6)], inclusion_mask=[(16.5e6, 50e6)]
+                "1", exclusion_mask=[(0, 10e6)], inclusion_mask=[(10e6, 20e6)]
             )
 
     @pytest.mark.usefixtures("tmp_path")
@@ -89,7 +90,7 @@ class TestMasking:
             for c, i in intervals_in.items():
                 for left, right in i:
                     fout.write(f"{c}\t{left}\t{right}\n")
-        species = stdgrimmsim.get_species("DagHyd")
+        species = stdgrimmsim.get_species("ZweBerg")
         contig = species.get_contig("1", inclusion_mask=bedfile)
         assert contig.exclusion_mask is None
         assert len(contig.inclusion_mask) == 4
@@ -125,7 +126,7 @@ class TestSimulate:
     def test_simulate_with_mask(self):
         # Only msprime: SLiM has separate_sexes/chromosomeType issues with catalog
         engines = ["msprime"]
-        species = stdgrimmsim.get_species("DagHyd")
+        species = stdgrimmsim.get_species("ZweBerg")
         L = 1000
         contig = species.get_contig(length=L)
         contig.mutation_rate = 1e-3
