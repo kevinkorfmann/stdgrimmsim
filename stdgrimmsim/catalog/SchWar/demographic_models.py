@@ -96,3 +96,68 @@ def _north_south_forest_split():
 
 
 _species.add_demographic_model(_north_south_forest_split())
+
+_central_forest = stdgrimmsim.Population(
+    id="CentralBlackForest", description="Central Schwarzwald (Kinzigtal)"
+)
+
+
+def _three_forest_zones():
+    id = "ThreeForestZones_3D12"
+    description = "Three population North, Central, South Black Forest model"
+    long_description = """
+        Three zones of Black Forest spirits. Ancestral N=40000.
+        North-South split 25000 gen ago. Central zone emerges from
+        North 12000 gen ago. North 70000, Central 40000, South 50000.
+        Stepping-stone migration: North-Central 3e-5, Central-South 3e-5.
+    """
+    populations = [_north_forest, _central_forest, _south_forest]
+    citations = [
+        stdgrimmsim.Citation(
+            author="Black Forest folklore",
+            year=1812,
+            doi="https://en.wikipedia.org/wiki/Black_Forest",
+            reasons={stdgrimmsim.CiteReason.DEM_MODEL},
+        )
+    ]
+    migration_matrix = [
+        [0, 3e-5, 0],
+        [3e-5, 0, 3e-5],
+        [0, 3e-5, 0],
+    ]
+    return stdgrimmsim.DemographicModel(
+        id=id,
+        description=description,
+        long_description=long_description,
+        populations=populations,
+        citations=citations,
+        generation_time=_species.generation_time,
+        mutation_rate=2.5e-8,
+        population_configurations=[
+            msprime.PopulationConfiguration(
+                initial_size=70_000, metadata=populations[0].asdict()
+            ),
+            msprime.PopulationConfiguration(
+                initial_size=40_000, metadata=populations[1].asdict()
+            ),
+            msprime.PopulationConfiguration(
+                initial_size=50_000, metadata=populations[2].asdict()
+            ),
+        ],
+        migration_matrix=migration_matrix,
+        demographic_events=[
+            msprime.MigrationRateChange(time=12_000, rate=0),
+            msprime.MassMigration(
+                time=12_000, source=1, destination=0, proportion=1.0
+            ),
+            msprime.MassMigration(
+                time=25_000, source=2, destination=0, proportion=1.0
+            ),
+            msprime.PopulationParametersChange(
+                time=25_000, initial_size=40_000, population_id=0
+            ),
+        ],
+    )
+
+
+_species.add_demographic_model(_three_forest_zones())

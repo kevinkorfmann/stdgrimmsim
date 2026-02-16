@@ -96,3 +96,69 @@ def _well_snow_split():
 
 
 _species.add_demographic_model(_well_snow_split())
+
+_apple_realm = stdgrimmsim.Population(
+    id="AppleRealm", description="Realm of the golden apple trees"
+)
+
+
+def _three_realms():
+    id = "ThreeRealms_3D12"
+    description = "Three realm Frau Holle demographic model"
+    long_description = """
+        Three realms of Frau Holle (KHM 24): Well, Snow, and Apple.
+        Ancestral realm N=35000. Well-Snow split 15000 gen ago.
+        Apple realm branches from Well 8000 gen ago.
+        Well at 60000, Snow at 20000, Apple at 15000.
+        Seasonal migration between Snow and Apple (2e-5 per gen).
+    """
+    populations = [_well_realm, _snow_realm, _apple_realm]
+    citations = [
+        stdgrimmsim.Citation(
+            author="Grimm, J. & W.",
+            year=1812,
+            doi="https://en.wikipedia.org/wiki/Frau_Holle",
+            reasons={stdgrimmsim.CiteReason.DEM_MODEL},
+        )
+    ]
+    migration_matrix = [
+        [0, 0, 0],
+        [0, 0, 2e-5],
+        [0, 2e-5, 0],
+    ]
+    return stdgrimmsim.DemographicModel(
+        id=id,
+        description=description,
+        long_description=long_description,
+        populations=populations,
+        citations=citations,
+        generation_time=_species.generation_time,
+        mutation_rate=2.5e-8,
+        population_configurations=[
+            msprime.PopulationConfiguration(
+                initial_size=60_000, metadata=populations[0].asdict()
+            ),
+            msprime.PopulationConfiguration(
+                initial_size=20_000, metadata=populations[1].asdict()
+            ),
+            msprime.PopulationConfiguration(
+                initial_size=15_000, metadata=populations[2].asdict()
+            ),
+        ],
+        migration_matrix=migration_matrix,
+        demographic_events=[
+            msprime.MigrationRateChange(time=8_000, rate=0),
+            msprime.MassMigration(
+                time=8_000, source=2, destination=0, proportion=1.0
+            ),
+            msprime.MassMigration(
+                time=15_000, source=1, destination=0, proportion=1.0
+            ),
+            msprime.PopulationParametersChange(
+                time=15_000, initial_size=35_000, population_id=0
+            ),
+        ],
+    )
+
+
+_species.add_demographic_model(_three_realms())
