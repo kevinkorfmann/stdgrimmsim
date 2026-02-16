@@ -97,9 +97,7 @@ def _forest_marsh():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=3_000, rate=0),
-            msprime.MassMigration(
-                time=3_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=3_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=3_000, initial_size=25_000, population_id=0
             ),

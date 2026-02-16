@@ -1,13 +1,10 @@
+import math
 import msprime
 import stdgrimmsim
 
 _species = stdgrimmsim.get_species("KobHau")
-_urban = stdgrimmsim.Population(
-    id="Urban", description="Kobolds of urban households"
-)
-_rural = stdgrimmsim.Population(
-    id="Rural", description="Kobolds of rural farmsteads"
-)
+_urban = stdgrimmsim.Population(id="Urban", description="Kobolds of urban households")
+_rural = stdgrimmsim.Population(id="Rural", description="Kobolds of rural farmsteads")
 _mine = stdgrimmsim.Population(
     id="Mine", description="Kobolds of the mines (Berggeist type)"
 )
@@ -97,9 +94,7 @@ def _urban_rural_split():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=5_000, rate=0),
-            msprime.MassMigration(
-                time=5_000, source=0, destination=1, proportion=1.0
-            ),
+            msprime.MassMigration(time=5_000, source=0, destination=1, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=5_000, initial_size=80_000, population_id=1
             ),
@@ -157,13 +152,9 @@ def _three_kobold_types():
         demographic_events=[
             msprime.MigrationRateChange(time=5_000, rate=0, matrix_index=(0, 1)),
             msprime.MigrationRateChange(time=5_000, rate=0, matrix_index=(1, 0)),
-            msprime.MassMigration(
-                time=5_000, source=0, destination=1, proportion=1.0
-            ),
+            msprime.MassMigration(time=5_000, source=0, destination=1, proportion=1.0),
             msprime.MigrationRateChange(time=20_000, rate=0),
-            msprime.MassMigration(
-                time=20_000, source=2, destination=1, proportion=1.0
-            ),
+            msprime.MassMigration(time=20_000, source=2, destination=1, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=20_000, initial_size=80_000, population_id=1
             ),
@@ -172,9 +163,6 @@ def _three_kobold_types():
 
 
 _species.add_demographic_model(_three_kobold_types())
-
-
-import math
 
 
 def _medieval_urban_boom():
@@ -266,9 +254,7 @@ def _urban_rural_im():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=5_000, rate=0),
-            msprime.MassMigration(
-                time=5_000, source=0, destination=1, proportion=1.0
-            ),
+            msprime.MassMigration(time=5_000, source=0, destination=1, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=5_000, initial_size=80_000, population_id=1
             ),
@@ -336,18 +322,12 @@ def _four_kobold_niches():
         demographic_events=[
             msprime.MigrationRateChange(time=2_000, rate=0, matrix_index=(0, 3)),
             msprime.MigrationRateChange(time=2_000, rate=0, matrix_index=(3, 0)),
-            msprime.MassMigration(
-                time=2_000, source=3, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=2_000, source=3, destination=0, proportion=1.0),
             msprime.MigrationRateChange(time=5_000, rate=0, matrix_index=(0, 1)),
             msprime.MigrationRateChange(time=5_000, rate=0, matrix_index=(1, 0)),
-            msprime.MassMigration(
-                time=5_000, source=0, destination=1, proportion=1.0
-            ),
+            msprime.MassMigration(time=5_000, source=0, destination=1, proportion=1.0),
             msprime.MigrationRateChange(time=20_000, rate=0),
-            msprime.MassMigration(
-                time=20_000, source=2, destination=1, proportion=1.0
-            ),
+            msprime.MassMigration(time=20_000, source=2, destination=1, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=20_000, initial_size=80_000, population_id=1
             ),

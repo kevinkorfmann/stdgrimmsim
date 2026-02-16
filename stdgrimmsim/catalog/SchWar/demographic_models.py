@@ -147,12 +147,8 @@ def _three_forest_zones():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=12_000, rate=0),
-            msprime.MassMigration(
-                time=12_000, source=1, destination=0, proportion=1.0
-            ),
-            msprime.MassMigration(
-                time=25_000, source=2, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=12_000, source=1, destination=0, proportion=1.0),
+            msprime.MassMigration(time=25_000, source=2, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=25_000, initial_size=40_000, population_id=0
             ),
@@ -250,9 +246,7 @@ def _north_south_im():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=25_000, rate=0),
-            msprime.MassMigration(
-                time=25_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=25_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=25_000, initial_size=40_000, population_id=0
             ),
@@ -317,16 +311,10 @@ def _four_forest_valleys():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=6_000, rate=0),
-            msprime.MassMigration(
-                time=6_000, source=3, destination=1, proportion=1.0
-            ),
+            msprime.MassMigration(time=6_000, source=3, destination=1, proportion=1.0),
             msprime.MigrationRateChange(time=12_000, rate=0),
-            msprime.MassMigration(
-                time=12_000, source=1, destination=0, proportion=1.0
-            ),
-            msprime.MassMigration(
-                time=25_000, source=2, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=12_000, source=1, destination=0, proportion=1.0),
+            msprime.MassMigration(time=25_000, source=2, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=25_000, initial_size=40_000, population_id=0
             ),

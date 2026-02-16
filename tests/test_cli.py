@@ -181,7 +181,9 @@ class TestHomoSapiensArgumentParser:
         assert args.samples == ["BlackForest:2"]
         assert args.cache_dir == "cache_dir"
 
-        args = parser.parse_args(["--cache-dir", "/some/cache_dir", cmd, "BlackForest:2"])
+        args = parser.parse_args(
+            ["--cache-dir", "/some/cache_dir", cmd, "BlackForest:2"]
+        )
         assert args.samples == ["BlackForest:2"]
         assert args.cache_dir == "/some/cache_dir"
 
@@ -268,7 +270,9 @@ class TestEndToEndSubprocess(TestEndToEnd):
     def verify(self, cmd, num_samples, seed=1):
         with tempfile.TemporaryDirectory() as tmpdir:
             filename = pathlib.Path(tmpdir) / "output.trees"
-            full_cmd = f"{sys.executable} -m stdgrimmsim -q {cmd} -o {filename} -s {seed}"
+            full_cmd = (
+                f"{sys.executable} -m stdgrimmsim -q {cmd} -o {filename} -s {seed}"
+            )
             subprocess.run(full_cmd, shell=True, check=True)
             ts = tskit.load(str(filename))
         assert ts.num_samples == num_samples
@@ -548,9 +552,7 @@ class TestErrors:
 
     @pytest.mark.skipif(IS_WINDOWS, reason="SLiM not available on windows")
     def test_browning_america_dfe(self):
-        self.verify_bad_samples(
-            "ZweBerg -d BlackForest_1D12 --dfe Gamma_K17 2 3 4 5 6"
-        )
+        self.verify_bad_samples("ZweBerg -d BlackForest_1D12 --dfe Gamma_K17 2 3 4 5 6")
 
 
 class TestHelp:
@@ -806,7 +808,9 @@ class TestDownloadGeneticMaps:
             assert mocked_download.call_count == expected_num_downloads
 
     def test_defaults(self):
-        num_maps = sum(len(species.genetic_maps) for species in stdgrimmsim.all_species())
+        num_maps = sum(
+            len(species.genetic_maps) for species in stdgrimmsim.all_species()
+        )
         assert num_maps > 0
         self.run_download("", num_maps)
 
@@ -912,7 +916,8 @@ class TestMsprimeEngine:
     def docmd(self, _cmd):
         with tempfile.TemporaryDirectory() as tmpdir:
             filename = pathlib.Path(tmpdir) / "output.trees"
-            cmd = f"-q -e msprime {_cmd} ZweBerg -L 100 --seed 1 -o {filename} BlackForest:5"
+            cmd = f"-q -e msprime {_cmd} ZweBerg -L 100 --seed 1 -o {filename} "
+            cmd += "BlackForest:5"
             return capture_output(stdgrimmsim.cli.stdgrimmsim_main, cmd.split())
 
     def test_simulate(self):
@@ -1109,14 +1114,17 @@ class TestSampleCountParser:
     def test_population_sample_pairs(self):
         cmd = "ZweBerg -c 1 --right 2489564 -d HarzBlackForest_2D12 BlackForest:5"
         self.verify(cmd, num_samples=[10, 0])
-        cmd = "ZweBerg -c 1 --right 2489564 -d HarzBlackForest_2D12 Harz:5 BlackForest:10"
+        cmd = (
+            "ZweBerg -c 1 --right 2489564 -d HarzBlackForest_2D12 Harz:5 BlackForest:10"
+        )
         self.verify(cmd, num_samples=[20, 10])
 
     def test_bad_sample_specification(self):
         for cmd in [
             "ZweBerg -c 1 --right 2489564 -d HarzBlackForest_2D12 5 bad",
             "ZweBerg -c 1 --right 2489564 -d HarzBlackForest_2D12 5 Harz:5",
-            "ZweBerg -c 1 --right 2489564 -d HarzBlackForest_2D12 BlackForest:5 very:bad",
+            "ZweBerg -c 1 --right 2489564 -d HarzBlackForest_2D12 "
+            "BlackForest:5 very:bad",
             "ZweBerg -c 1 --right 2489564 -d HarzBlackForest_2D12 BlackForest=5",
         ]:
             with pytest.raises(
@@ -1125,6 +1133,9 @@ class TestSampleCountParser:
                 self.verify(cmd, num_samples=[10, 0])
 
     def test_duplicate_sample_specification(self):
-        cmd = "ZweBerg -c 1 --right 2489564 -d HarzBlackForest_2D12 BlackForest:5 BlackForest:5"
+        cmd = (
+            "ZweBerg -c 1 --right 2489564 -d HarzBlackForest_2D12 "
+            "BlackForest:5 BlackForest:5"
+        )
         with pytest.raises(ValueError, match="specified more than once"):
             self.verify(cmd, num_samples=[20, 0])

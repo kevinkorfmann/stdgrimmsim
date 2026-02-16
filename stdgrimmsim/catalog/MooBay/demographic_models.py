@@ -3,7 +3,8 @@ import stdgrimmsim
 
 _species = stdgrimmsim.get_species("MooBay")
 _bayrischer_wald = stdgrimmsim.Population(
-    id="BayrischerWald", description="Moosweiber of the Bavarian Forest (Bayrischer Wald)"
+    id="BayrischerWald",
+    description="Moosweiber of the Bavarian Forest (Bayrischer Wald)",
 )
 _oberpfalz = stdgrimmsim.Population(
     id="Oberpfalz", description="Moosweiber of the Upper Palatinate (Oberpfalz)"

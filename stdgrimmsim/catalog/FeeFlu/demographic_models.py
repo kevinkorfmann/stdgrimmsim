@@ -97,9 +97,7 @@ def _main_moselle_split():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=18_000, rate=0),
-            msprime.MassMigration(
-                time=18_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=18_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=18_000, initial_size=40_000, population_id=0
             ),
@@ -156,13 +154,9 @@ def _three_tributaries():
         demographic_events=[
             msprime.MigrationRateChange(time=10_000, rate=0, matrix_index=(0, 2)),
             msprime.MigrationRateChange(time=10_000, rate=0, matrix_index=(2, 0)),
-            msprime.MassMigration(
-                time=10_000, source=2, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=10_000, source=2, destination=0, proportion=1.0),
             msprime.MigrationRateChange(time=18_000, rate=0),
-            msprime.MassMigration(
-                time=18_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=18_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=18_000, initial_size=40_000, population_id=0
             ),
@@ -262,9 +256,7 @@ def _main_moselle_im():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=18_000, rate=0),
-            msprime.MassMigration(
-                time=18_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=18_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=18_000, initial_size=40_000, population_id=0
             ),
@@ -275,9 +267,7 @@ def _main_moselle_im():
 _species.add_demographic_model(_main_moselle_im())
 
 
-_lahn = stdgrimmsim.Population(
-    id="Lahn", description="River fairies of the Lahn"
-)
+_lahn = stdgrimmsim.Population(id="Lahn", description="River fairies of the Lahn")
 
 
 def _four_tributaries():
@@ -330,18 +320,12 @@ def _four_tributaries():
         demographic_events=[
             msprime.MigrationRateChange(time=5_000, rate=0, matrix_index=(1, 3)),
             msprime.MigrationRateChange(time=5_000, rate=0, matrix_index=(3, 1)),
-            msprime.MassMigration(
-                time=5_000, source=3, destination=1, proportion=1.0
-            ),
+            msprime.MassMigration(time=5_000, source=3, destination=1, proportion=1.0),
             msprime.MigrationRateChange(time=10_000, rate=0, matrix_index=(0, 2)),
             msprime.MigrationRateChange(time=10_000, rate=0, matrix_index=(2, 0)),
-            msprime.MassMigration(
-                time=10_000, source=2, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=10_000, source=2, destination=0, proportion=1.0),
             msprime.MigrationRateChange(time=18_000, rate=0),
-            msprime.MassMigration(
-                time=18_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=18_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=18_000, initial_size=40_000, population_id=0
             ),

@@ -97,9 +97,7 @@ def _rhineland_livonian_split():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=15_000, rate=0),
-            msprime.MassMigration(
-                time=15_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=15_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=15_000, initial_size=8_000, population_id=0
             ),
@@ -174,12 +172,8 @@ def _three_werewolf_packs():
                 time=1000, initial_size=6_000, population_id=2
             ),
             msprime.MigrationRateChange(time=8_000, rate=0),
-            msprime.MassMigration(
-                time=8_000, source=1, destination=0, proportion=1.0
-            ),
-            msprime.MassMigration(
-                time=15_000, source=2, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=8_000, source=1, destination=0, proportion=1.0),
+            msprime.MassMigration(time=15_000, source=2, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=15_000, initial_size=8_000, population_id=0
             ),
@@ -279,9 +273,7 @@ def _rhineland_livonian_im():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=15_000, rate=0),
-            msprime.MassMigration(
-                time=15_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=15_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=15_000, initial_size=8_000, population_id=0
             ),
@@ -299,7 +291,9 @@ _franconian = stdgrimmsim.Population(
 
 def _four_werewolf_packs():
     id = "FourWerewolfPacks_4D12"
-    description = "Four population Werewolf model (Rhineland, Bavarian, Livonian, Franconian)"
+    description = (
+        "Four population Werewolf model (Rhineland, Bavarian, Livonian, Franconian)"
+    )
     long_description = """
         Four werewolf populations across central/eastern Europe.
         Ancestral N=8000. Livonian splits 15000 gen ago. Bavarian
@@ -347,15 +341,9 @@ def _four_werewolf_packs():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=4_000, rate=0),
-            msprime.MassMigration(
-                time=4_000, source=3, destination=1, proportion=1.0
-            ),
-            msprime.MassMigration(
-                time=8_000, source=1, destination=0, proportion=1.0
-            ),
-            msprime.MassMigration(
-                time=15_000, source=2, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=4_000, source=3, destination=1, proportion=1.0),
+            msprime.MassMigration(time=8_000, source=1, destination=0, proportion=1.0),
+            msprime.MassMigration(time=15_000, source=2, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=15_000, initial_size=8_000, population_id=0
             ),

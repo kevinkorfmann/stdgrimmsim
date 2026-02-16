@@ -5,9 +5,7 @@ _species = stdgrimmsim.get_species("ZweBerg")
 _black_forest = stdgrimmsim.Population(
     id="BlackForest", description="Dwarves of the Schwarzwald mines"
 )
-_harz = stdgrimmsim.Population(
-    id="Harz", description="Dwarves of the Harz mountains"
-)
+_harz = stdgrimmsim.Population(id="Harz", description="Dwarves of the Harz mountains")
 
 
 def _black_forest_single():
@@ -160,15 +158,11 @@ def _alpine_dwarf_radiation():
                 time=5000, initial_size=4_000, population_id=1
             ),
             msprime.MigrationRateChange(time=15_000, rate=0),
-            msprime.MassMigration(
-                time=15_000, source=2, destination=1, proportion=1.0
-            ),
+            msprime.MassMigration(time=15_000, source=2, destination=1, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=15_000, initial_size=10_000, population_id=1
             ),
-            msprime.MassMigration(
-                time=30_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=30_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=30_000, initial_size=40_000, population_id=0
             ),
@@ -229,7 +223,9 @@ _species.add_demographic_model(_mine_collapse())
 
 def _isolation_migration():
     id = "IsolationMigration_2D12"
-    description = "Classic IM model between BlackForest and Harz with asymmetric migration"
+    description = (
+        "Classic IM model between BlackForest and Harz with asymmetric migration"
+    )
     long_description = """
         Isolation-with-migration model between Black Forest and Harz dwarves.
         BlackForest N=80000, Harz N=25000. Split 20000 gen ago from ancestral
@@ -267,9 +263,7 @@ def _isolation_migration():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=20_000, rate=0),
-            msprime.MassMigration(
-                time=20_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=20_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=20_000, initial_size=40_000, population_id=0
             ),
@@ -331,35 +325,17 @@ def _four_mountain_ranges():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=10_000, rate=0),
-            msprime.MassMigration(
-                time=10_000, source=3, destination=0, proportion=1.0
-            ),
-            msprime.MigrationRateChange(
-                time=10_000, rate=5e-6, matrix_index=(0, 1)
-            ),
-            msprime.MigrationRateChange(
-                time=10_000, rate=5e-6, matrix_index=(1, 0)
-            ),
-            msprime.MigrationRateChange(
-                time=10_000, rate=8e-6, matrix_index=(1, 2)
-            ),
-            msprime.MigrationRateChange(
-                time=10_000, rate=8e-6, matrix_index=(2, 1)
-            ),
+            msprime.MassMigration(time=10_000, source=3, destination=0, proportion=1.0),
+            msprime.MigrationRateChange(time=10_000, rate=5e-6, matrix_index=(0, 1)),
+            msprime.MigrationRateChange(time=10_000, rate=5e-6, matrix_index=(1, 0)),
+            msprime.MigrationRateChange(time=10_000, rate=8e-6, matrix_index=(1, 2)),
+            msprime.MigrationRateChange(time=10_000, rate=8e-6, matrix_index=(2, 1)),
             msprime.MigrationRateChange(time=15_000, rate=0),
-            msprime.MassMigration(
-                time=15_000, source=2, destination=1, proportion=1.0
-            ),
-            msprime.MigrationRateChange(
-                time=15_000, rate=5e-6, matrix_index=(0, 1)
-            ),
-            msprime.MigrationRateChange(
-                time=15_000, rate=5e-6, matrix_index=(1, 0)
-            ),
+            msprime.MassMigration(time=15_000, source=2, destination=1, proportion=1.0),
+            msprime.MigrationRateChange(time=15_000, rate=5e-6, matrix_index=(0, 1)),
+            msprime.MigrationRateChange(time=15_000, rate=5e-6, matrix_index=(1, 0)),
             msprime.MigrationRateChange(time=25_000, rate=0),
-            msprime.MassMigration(
-                time=25_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=25_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=25_000, initial_size=40_000, population_id=0
             ),

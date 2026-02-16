@@ -97,9 +97,7 @@ def _thuringian_baltic_split():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=20_000, rate=0),
-            msprime.MassMigration(
-                time=20_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=20_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=20_000, initial_size=25_000, population_id=0
             ),
@@ -155,12 +153,8 @@ def _three_forest_realms():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=12_000, rate=0),
-            msprime.MassMigration(
-                time=12_000, source=2, destination=0, proportion=1.0
-            ),
-            msprime.MassMigration(
-                time=20_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=12_000, source=2, destination=0, proportion=1.0),
+            msprime.MassMigration(time=20_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=20_000, initial_size=25_000, population_id=0
             ),
@@ -260,9 +254,7 @@ def _thuringian_baltic_im():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=20_000, rate=0),
-            msprime.MassMigration(
-                time=20_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=20_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=20_000, initial_size=25_000, population_id=0
             ),
@@ -330,18 +322,12 @@ def _four_forest_domains():
         demographic_events=[
             msprime.MigrationRateChange(time=6_000, rate=0, matrix_index=(2, 3)),
             msprime.MigrationRateChange(time=6_000, rate=0, matrix_index=(3, 2)),
-            msprime.MassMigration(
-                time=6_000, source=3, destination=2, proportion=1.0
-            ),
+            msprime.MassMigration(time=6_000, source=3, destination=2, proportion=1.0),
             msprime.MigrationRateChange(time=12_000, rate=0, matrix_index=(0, 2)),
             msprime.MigrationRateChange(time=12_000, rate=0, matrix_index=(2, 0)),
-            msprime.MassMigration(
-                time=12_000, source=2, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=12_000, source=2, destination=0, proportion=1.0),
             msprime.MigrationRateChange(time=20_000, rate=0),
-            msprime.MassMigration(
-                time=20_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=20_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=20_000, initial_size=25_000, population_id=0
             ),

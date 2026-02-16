@@ -5,12 +5,8 @@ _species = stdgrimmsim.get_species("HeiCol")
 _cologne = stdgrimmsim.Population(
     id="Cologne", description="Heinzelmaennchen of Cologne workshops"
 )
-_aachen = stdgrimmsim.Population(
-    id="Aachen", description="Heinzelmaennchen of Aachen"
-)
-_bremen = stdgrimmsim.Population(
-    id="Bremen", description="Heinzelmaennchen of Bremen"
-)
+_aachen = stdgrimmsim.Population(id="Aachen", description="Heinzelmaennchen of Aachen")
+_bremen = stdgrimmsim.Population(id="Bremen", description="Heinzelmaennchen of Bremen")
 
 
 def _cologne_single():
@@ -98,9 +94,7 @@ def _cologne_aachen_split():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=8_000, rate=0),
-            msprime.MassMigration(
-                time=8_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=8_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=8_000, initial_size=100_000, population_id=0
             ),
@@ -158,13 +152,9 @@ def _three_rhineland_cities():
         demographic_events=[
             msprime.MigrationRateChange(time=4_000, rate=0, matrix_index=(0, 2)),
             msprime.MigrationRateChange(time=4_000, rate=0, matrix_index=(2, 0)),
-            msprime.MassMigration(
-                time=4_000, source=2, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=4_000, source=2, destination=0, proportion=1.0),
             msprime.MigrationRateChange(time=8_000, rate=0),
-            msprime.MassMigration(
-                time=8_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=8_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=8_000, initial_size=100_000, population_id=0
             ),
@@ -264,9 +254,7 @@ def _cologne_aachen_im():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=8_000, rate=0),
-            msprime.MassMigration(
-                time=8_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=8_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=8_000, initial_size=100_000, population_id=0
             ),
@@ -284,7 +272,9 @@ _duesseldorf = stdgrimmsim.Population(
 
 def _four_rhineland_cities():
     id = "FourRhinelandCities_4D12"
-    description = "Four population Heinzelmaennchen model (Cologne, Aachen, Bremen, Duesseldorf)"
+    description = (
+        "Four population Heinzelmaennchen model (Cologne, Aachen, Bremen, Duesseldorf)"
+    )
     long_description = """
         Four city populations of Heinzelmaennchen. Ancestral N=100000.
         Aachen splits from Cologne 8000 gen ago. Bremen colonized from
@@ -332,18 +322,12 @@ def _four_rhineland_cities():
         demographic_events=[
             msprime.MigrationRateChange(time=2_000, rate=0, matrix_index=(0, 3)),
             msprime.MigrationRateChange(time=2_000, rate=0, matrix_index=(3, 0)),
-            msprime.MassMigration(
-                time=2_000, source=3, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=2_000, source=3, destination=0, proportion=1.0),
             msprime.MigrationRateChange(time=4_000, rate=0, matrix_index=(0, 2)),
             msprime.MigrationRateChange(time=4_000, rate=0, matrix_index=(2, 0)),
-            msprime.MassMigration(
-                time=4_000, source=2, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=4_000, source=2, destination=0, proportion=1.0),
             msprime.MigrationRateChange(time=8_000, rate=0),
-            msprime.MassMigration(
-                time=8_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=8_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=8_000, initial_size=100_000, population_id=0
             ),

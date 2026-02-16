@@ -5,9 +5,7 @@ _species = stdgrimmsim.get_species("PomBal")
 _usedom = stdgrimmsim.Population(
     id="Usedom", description="Spirits of Usedom island (Pomerania)"
 )
-_rugen = stdgrimmsim.Population(
-    id="Rugen", description="Spirits of Rügen island"
-)
+_rugen = stdgrimmsim.Population(id="Rugen", description="Spirits of Rügen island")
 _stettin = stdgrimmsim.Population(
     id="Stettin", description="Stettin (Szczecin) lagoon and Oder mouth"
 )

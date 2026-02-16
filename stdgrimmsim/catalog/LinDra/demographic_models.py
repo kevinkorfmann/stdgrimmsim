@@ -97,9 +97,7 @@ def _rhine_klagenfurt_split():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=8_000, rate=0),
-            msprime.MassMigration(
-                time=8_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=8_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=8_000, initial_size=5_000, population_id=0
             ),
@@ -166,12 +164,8 @@ def _three_dragon_lairs():
             msprime.PopulationParametersChange(
                 time=2000, initial_size=3_000, population_id=2
             ),
-            msprime.MassMigration(
-                time=8_000, source=1, destination=0, proportion=1.0
-            ),
-            msprime.MassMigration(
-                time=12_000, source=2, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=8_000, source=1, destination=0, proportion=1.0),
+            msprime.MassMigration(time=12_000, source=2, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=12_000, initial_size=5_000, population_id=0
             ),
@@ -274,9 +268,7 @@ def _rhine_klagenfurt_im():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=8_000, rate=0),
-            msprime.MassMigration(
-                time=8_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=8_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=8_000, initial_size=5_000, population_id=0
             ),
@@ -294,7 +286,9 @@ _wawel = stdgrimmsim.Population(
 
 def _four_dragon_lairs():
     id = "FourDragonLairs_4D12"
-    description = "Four population Lindwurm model (Rhine, Klagenfurt, Scandinavian, Wawel)"
+    description = (
+        "Four population Lindwurm model (Rhine, Klagenfurt, Scandinavian, Wawel)"
+    )
     long_description = """
         Four dragon populations. Ancestral N=5000. Scandinavian splits
         12000 gen ago. Klagenfurt splits from Rhine 8000 gen ago.
@@ -341,15 +335,9 @@ def _four_dragon_lairs():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=5_000, rate=0),
-            msprime.MassMigration(
-                time=5_000, source=3, destination=1, proportion=1.0
-            ),
-            msprime.MassMigration(
-                time=8_000, source=1, destination=0, proportion=1.0
-            ),
-            msprime.MassMigration(
-                time=12_000, source=2, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=5_000, source=3, destination=1, proportion=1.0),
+            msprime.MassMigration(time=8_000, source=1, destination=0, proportion=1.0),
+            msprime.MassMigration(time=12_000, source=2, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=12_000, initial_size=5_000, population_id=0
             ),

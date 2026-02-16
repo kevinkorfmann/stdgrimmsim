@@ -1444,7 +1444,9 @@ class TestGenomicElementTypes(PiecewiseConstantSizeMixin):
         slim_mt_info = ts.metadata["SLiM"]["user_metadata"]["mutationTypes"][0]
         has_recap = metadata_ids[-1] == "recapitation"
         slim_to_mt_map = {}
-        assert len(contig.dfe_list) + has_recap == len(ts.metadata["stdgrimmsim"]["DFEs"])
+        assert len(contig.dfe_list) + has_recap == len(
+            ts.metadata["stdgrimmsim"]["DFEs"]
+        )
         for dfe, ts_metadata in zip(contig.dfe_list, ts.metadata["stdgrimmsim"]["DFEs"]):
             assert dfe.id == ts_metadata["id"]
             assert len(dfe.mutation_types) == len(ts_metadata["mutation_types"])
@@ -3299,7 +3301,9 @@ class TestPloidy:
         contig = stdgrimmsim.Contig.basic_contig(length=1000, ploidy=2)
         model = stdgrimmsim.PiecewiseConstantSize(N)
         with caplog.at_level(logging.DEBUG):
-            engine.simulate(model, contig, samples={"BlackForest": 2}, verbosity=2, seed=9)
+            engine.simulate(
+                model, contig, samples={"BlackForest": 2}, verbosity=2, seed=9
+            )
         log_str = " ".join([rec.getMessage() for rec in caplog.records])
         # match: "1: p = sim.addSubpop(0, <SLiM population size>);"
         extract_ne = re.compile(".+1: p = sim.addSubpop\\(0, ([0-9]+)\\).+")

@@ -105,8 +105,9 @@ def _east_prussia_three_region():
     id = "EastPrussiaBaltic_3D12"
     description = "Three population East Prussian Baltic: Nehrung, Memelland, Samland"
     long_description = """
-        Three East Prussian Baltic regions. Ancestral N=15000. Splits: Samland 12000 gen ago,
-        Memelland 18000 gen ago. Kurische Nehrung 28000, Memelland 18000, Samland 22000.
+        Three East Prussian Baltic regions. Ancestral N=15000. Splits: Samland
+        12000 gen ago, Memelland 18000 gen ago. Kurische Nehrung 28000,
+        Memelland 18000, Samland 22000.
     """
     populations = [_kurische_nehrung, _memelland, _samland]
     citations = [

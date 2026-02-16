@@ -5,9 +5,7 @@ _species = stdgrimmsim.get_species("FraHol")
 _well_realm = stdgrimmsim.Population(
     id="WellRealm", description="Frau Holle's realm beyond the well (Hesse/Thuringia)"
 )
-_snow_realm = stdgrimmsim.Population(
-    id="SnowRealm", description="Snow-shaking realm"
-)
+_snow_realm = stdgrimmsim.Population(id="SnowRealm", description="Snow-shaking realm")
 
 
 def _well_realm_single():
@@ -148,12 +146,8 @@ def _three_realms():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=8_000, rate=0),
-            msprime.MassMigration(
-                time=8_000, source=2, destination=0, proportion=1.0
-            ),
-            msprime.MassMigration(
-                time=15_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=8_000, source=2, destination=0, proportion=1.0),
+            msprime.MassMigration(time=15_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=15_000, initial_size=35_000, population_id=0
             ),
@@ -250,9 +244,7 @@ def _well_snow_im():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=15_000, rate=0),
-            msprime.MassMigration(
-                time=15_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=15_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=15_000, initial_size=35_000, population_id=0
             ),
@@ -308,15 +300,9 @@ def _four_realms():
             ),
         ],
         demographic_events=[
-            msprime.MassMigration(
-                time=4_000, source=3, destination=2, proportion=1.0
-            ),
-            msprime.MassMigration(
-                time=8_000, source=2, destination=0, proportion=1.0
-            ),
-            msprime.MassMigration(
-                time=15_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=4_000, source=3, destination=2, proportion=1.0),
+            msprime.MassMigration(time=8_000, source=2, destination=0, proportion=1.0),
+            msprime.MassMigration(time=15_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=15_000, initial_size=35_000, population_id=0
             ),

@@ -3,7 +3,8 @@ import stdgrimmsim
 
 _species = stdgrimmsim.get_species("MasLak")
 _masurian_lakes = stdgrimmsim.Population(
-    id="MasurianLakes", description="Lake spirits of the Masurian Lake District (Masuren)"
+    id="MasurianLakes",
+    description="Lake spirits of the Masurian Lake District (Masuren)",
 )
 _spirdingsee = stdgrimmsim.Population(
     id="Spirdingsee", description="Spirits of the Spirdingsee (Śniardwy) region"
@@ -105,8 +106,9 @@ def _masurian_three_lakes():
     id = "MasurianThreeLakes_3D12"
     description = "Three population Masurian lakes: main district, Spirdingsee, Mauersee"
     long_description = """
-        Three lake regions in Masuren. Ancestral N=10000. Splits: Mauersee (Mamry) 11000 gen ago,
-        Spirdingsee 18000 gen ago. Masurian Lakes 32000, Spirdingsee 12000, Mauersee 15000.
+        Three lake regions in Masuren. Ancestral N=10000. Splits: Mauersee (Mamry)
+        11000 gen ago, Spirdingsee 18000 gen ago. Masurian Lakes 32000,
+        Spirdingsee 12000, Mauersee 15000.
     """
     populations = [_masurian_lakes, _spirdingsee, _mauersee]
     citations = [

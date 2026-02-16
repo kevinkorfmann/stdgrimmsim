@@ -5,9 +5,7 @@ _species = stdgrimmsim.get_species("AlpNac")
 _swabian = stdgrimmsim.Population(
     id="Swabian", description="Alps of the Swabian Alb region"
 )
-_saxon = stdgrimmsim.Population(
-    id="Saxon", description="Alps of the Saxon lowlands"
-)
+_saxon = stdgrimmsim.Population(id="Saxon", description="Alps of the Saxon lowlands")
 _alpine = stdgrimmsim.Population(
     id="AlpineAlp", description="Alps of the Alpine valleys (Tyrol/Bavaria)"
 )
@@ -97,9 +95,7 @@ def _swabian_saxon_split():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=30_000, rate=0),
-            msprime.MassMigration(
-                time=30_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=30_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=30_000, initial_size=30_000, population_id=0
             ),
@@ -155,12 +151,8 @@ def _three_alp_regions():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=15_000, rate=0),
-            msprime.MassMigration(
-                time=15_000, source=2, destination=0, proportion=1.0
-            ),
-            msprime.MassMigration(
-                time=30_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=15_000, source=2, destination=0, proportion=1.0),
+            msprime.MassMigration(time=30_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=30_000, initial_size=30_000, population_id=0
             ),
@@ -258,9 +250,7 @@ def _swabian_saxon_im():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=30_000, rate=0),
-            msprime.MassMigration(
-                time=30_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=30_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=30_000, initial_size=30_000, population_id=0
             ),
@@ -325,15 +315,9 @@ def _four_alp_regions():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=8_000, rate=0),
-            msprime.MassMigration(
-                time=8_000, source=3, destination=1, proportion=1.0
-            ),
-            msprime.MassMigration(
-                time=15_000, source=2, destination=0, proportion=1.0
-            ),
-            msprime.MassMigration(
-                time=30_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=8_000, source=3, destination=1, proportion=1.0),
+            msprime.MassMigration(time=15_000, source=2, destination=0, proportion=1.0),
+            msprime.MassMigration(time=30_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=30_000, initial_size=30_000, population_id=0
             ),

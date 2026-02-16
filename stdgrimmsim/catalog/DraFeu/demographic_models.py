@@ -97,9 +97,7 @@ def _rhine_bavaria_split():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=3_000, rate=0),
-            msprime.MassMigration(
-                time=3_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=3_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=3_000, initial_size=5_000, population_id=0
             ),
@@ -112,7 +110,9 @@ _species.add_demographic_model(_rhine_bavaria_split())
 
 def _dragon_slayer():
     id = "DragonSlayer_1D12"
-    description = "Single population Firedrake model with severe Siegfried-era bottleneck"
+    description = (
+        "Single population Firedrake model with severe Siegfried-era bottleneck"
+    )
     long_description = """
         Single Firedrake population with severe bottleneck reflecting
         the Siegfried-era dragon slaying. Modern N=8000, time=100 N=500

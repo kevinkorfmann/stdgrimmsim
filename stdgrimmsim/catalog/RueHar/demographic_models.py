@@ -98,7 +98,9 @@ _erzgebirge = stdgrimmsim.Population(
 
 def _three_mountain_ranges():
     id = "ThreeMountains_3D12"
-    description = "Three population mountain spirit model (Riesengebirge, Harz, Erzgebirge)"
+    description = (
+        "Three population mountain spirit model (Riesengebirge, Harz, Erzgebirge)"
+    )
     long_description = """
         Mountain spirits across three central European ranges.
         Ancestral N=5000 in Riesengebirge. Harz colony splits 8000
@@ -142,12 +144,8 @@ def _three_mountain_ranges():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=4_000, rate=0),
-            msprime.MassMigration(
-                time=4_000, source=2, destination=1, proportion=1.0
-            ),
-            msprime.MassMigration(
-                time=8_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=4_000, source=2, destination=1, proportion=1.0),
+            msprime.MassMigration(time=8_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=8_000, initial_size=5_000, population_id=0
             ),
@@ -160,7 +158,9 @@ _species.add_demographic_model(_three_mountain_ranges())
 
 def _ancient_mountain_spirit():
     id = "AncientMountainSpirit_1D12"
-    description = "Single population ancient mountain spirit with slow exponential growth"
+    description = (
+        "Single population ancient mountain spirit with slow exponential growth"
+    )
     long_description = """
         Single population with ancient slow exponential growth.
         Modern N=15000, growth from N=2000 starting 30000 gen ago.
@@ -241,9 +241,7 @@ def _riesen_harz_im():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=8_000, rate=0),
-            msprime.MassMigration(
-                time=8_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=8_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=8_000, initial_size=5_000, population_id=0
             ),
@@ -309,16 +307,10 @@ def _four_mountain_spirits():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=3_000, rate=0),
-            msprime.MassMigration(
-                time=3_000, source=3, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=3_000, source=3, destination=0, proportion=1.0),
             msprime.MigrationRateChange(time=4_000, rate=0),
-            msprime.MassMigration(
-                time=4_000, source=2, destination=1, proportion=1.0
-            ),
-            msprime.MassMigration(
-                time=8_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=4_000, source=2, destination=1, proportion=1.0),
+            msprime.MassMigration(time=8_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=8_000, initial_size=5_000, population_id=0
             ),

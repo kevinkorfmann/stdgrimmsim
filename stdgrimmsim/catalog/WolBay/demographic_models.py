@@ -6,7 +6,8 @@ _upper_bavaria = stdgrimmsim.Population(
     id="UpperBavaria", description="Wolpertinger of Upper Bavaria (Oberbayern)"
 )
 _bavarian_forest = stdgrimmsim.Population(
-    id="BavarianForest", description="Wolpertinger of the Bavarian Forest (Bayrischer Wald)"
+    id="BavarianForest",
+    description="Wolpertinger of the Bavarian Forest (Bayrischer Wald)",
 )
 _allgau = stdgrimmsim.Population(
     id="Allgaeu", description="Wolpertinger of the Allgäu Alps"

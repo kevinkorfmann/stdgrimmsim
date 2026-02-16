@@ -98,9 +98,7 @@ def _brocken_bamberg_split():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=2_000, rate=0),
-            msprime.MassMigration(
-                time=2_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=2_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=2_000, initial_size=15_000, population_id=0
             ),
@@ -113,7 +111,9 @@ _species.add_demographic_model(_brocken_bamberg_split())
 
 def _witch_trial_purge():
     id = "WitchTrialPurge_1D12"
-    description = "Single population Walpurgis Witch model with severe witch-trial bottleneck"
+    description = (
+        "Single population Walpurgis Witch model with severe witch-trial bottleneck"
+    )
     long_description = """
         Single witch population with a severe bottleneck during the
         height of witch trials (~1690). Modern N=25000, height of

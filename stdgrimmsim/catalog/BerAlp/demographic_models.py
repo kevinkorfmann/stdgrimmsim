@@ -8,9 +8,7 @@ _bavarian_alps = stdgrimmsim.Population(
 _salzburg = stdgrimmsim.Population(
     id="Salzburg", description="Berchta of Salzburg / Rauhnacht region"
 )
-_tyrol = stdgrimmsim.Population(
-    id="Tyrol", description="Perchta of Tyrol (Tirol)"
-)
+_tyrol = stdgrimmsim.Population(id="Tyrol", description="Perchta of Tyrol (Tirol)")
 
 
 def _bavarian_alps_single():

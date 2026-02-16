@@ -1747,7 +1747,9 @@ class _SLiMEngine(stdgrimmsim.Engine):
                     ts, contig.inclusion_mask, False
                 )
             if contig.exclusion_mask is not None:
-                ts = stdgrimmsim.utils.mask_tree_sequence(ts, contig.exclusion_mask, True)
+                ts = stdgrimmsim.utils.mask_tree_sequence(
+                    ts, contig.exclusion_mask, True
+                )
 
         return ts
 

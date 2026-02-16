@@ -34,7 +34,7 @@ CATALOG_SPECIES = {
     "AscPut",
 }
 
-# Reference species for test_cli / test_slim_engine (must have demographic model + populations)
+# Reference species for test_cli / test_slim_engine (needs dem model + pops)
 REFERENCE_SPECIES_ID = "ZweBerg"
 REFERENCE_POP = "BlackForest"
 REFERENCE_MODEL = "BlackForest_1D12"

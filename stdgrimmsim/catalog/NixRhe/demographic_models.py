@@ -141,12 +141,8 @@ def _three_rivers():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=12_000, rate=0),
-            msprime.MassMigration(
-                time=12_000, source=1, destination=0, proportion=1.0
-            ),
-            msprime.MassMigration(
-                time=18_000, source=2, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=12_000, source=1, destination=0, proportion=1.0),
+            msprime.MassMigration(time=18_000, source=2, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=18_000, initial_size=25_000, population_id=0
             ),
@@ -245,9 +241,7 @@ def _rhine_elbe_im():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=12_000, rate=0),
-            msprime.MassMigration(
-                time=12_000, source=1, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=12_000, source=1, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=12_000, initial_size=25_000, population_id=0
             ),
@@ -311,35 +305,17 @@ def _four_rivers():
         migration_matrix=migration_matrix,
         demographic_events=[
             msprime.MigrationRateChange(time=6_000, rate=0),
-            msprime.MassMigration(
-                time=6_000, source=3, destination=1, proportion=1.0
-            ),
-            msprime.MigrationRateChange(
-                time=6_000, rate=5e-6, matrix_index=(0, 1)
-            ),
-            msprime.MigrationRateChange(
-                time=6_000, rate=5e-6, matrix_index=(1, 0)
-            ),
-            msprime.MigrationRateChange(
-                time=6_000, rate=2e-6, matrix_index=(0, 2)
-            ),
-            msprime.MigrationRateChange(
-                time=6_000, rate=2e-6, matrix_index=(2, 0)
-            ),
+            msprime.MassMigration(time=6_000, source=3, destination=1, proportion=1.0),
+            msprime.MigrationRateChange(time=6_000, rate=5e-6, matrix_index=(0, 1)),
+            msprime.MigrationRateChange(time=6_000, rate=5e-6, matrix_index=(1, 0)),
+            msprime.MigrationRateChange(time=6_000, rate=2e-6, matrix_index=(0, 2)),
+            msprime.MigrationRateChange(time=6_000, rate=2e-6, matrix_index=(2, 0)),
             msprime.MigrationRateChange(time=12_000, rate=0),
-            msprime.MassMigration(
-                time=12_000, source=1, destination=0, proportion=1.0
-            ),
-            msprime.MigrationRateChange(
-                time=12_000, rate=2e-6, matrix_index=(0, 2)
-            ),
-            msprime.MigrationRateChange(
-                time=12_000, rate=2e-6, matrix_index=(2, 0)
-            ),
+            msprime.MassMigration(time=12_000, source=1, destination=0, proportion=1.0),
+            msprime.MigrationRateChange(time=12_000, rate=2e-6, matrix_index=(0, 2)),
+            msprime.MigrationRateChange(time=12_000, rate=2e-6, matrix_index=(2, 0)),
             msprime.MigrationRateChange(time=18_000, rate=0),
-            msprime.MassMigration(
-                time=18_000, source=2, destination=0, proportion=1.0
-            ),
+            msprime.MassMigration(time=18_000, source=2, destination=0, proportion=1.0),
             msprime.PopulationParametersChange(
                 time=18_000, initial_size=25_000, population_id=0
             ),
@@ -352,7 +328,9 @@ _species.add_demographic_model(_four_rivers())
 
 def _tidal_fluctuation():
     id = "TidalFluctuation_1D12"
-    description = "Single population with oscillating size representing tidal fluctuations"
+    description = (
+        "Single population with oscillating size representing tidal fluctuations"
+    )
     long_description = """
         Single population of Rhine Nixes with oscillating population size
         representing seasonal/tidal fluctuations over deep time. Modern

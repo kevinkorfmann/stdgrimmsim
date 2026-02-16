@@ -42,8 +42,8 @@ def set_cache_dir(cache_dir=None):
 def get_cache_dir():
     """
     Returns the directory used to cache material downloaded by stdgrimmsim as a
-    pathlib.Path instance. Defaults to a directory 'stdgrimmsim' in a user cache directory
-    (e.g., ~/.cache/stdopsim on Unix flavours). See the :func:`.set_cache_dir` function
+    pathlib.Path instance. Defaults to a directory 'stdgrimmsim' in a user
+    cache directory (e.g. ~/.cache/stdgrimmsim on Unix). See :func:`.set_cache_dir`
     for how this value can be set.
     """
     return _cache_dir
