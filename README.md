@@ -6,7 +6,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-3C2F2F.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Docs](https://img.shields.io/github/actions/workflow/status/kevinkorfmann/stdgrimmsim/docs.yml?branch=main&label=docs&color=7A6652)](https://stdgrimmsim.readthedocs.io/en/latest/)
 [![codecov](https://img.shields.io/codecov/c/gh/kevinkorfmann/stdgrimmsim?color=4A3C2A)](https://codecov.io/gh/kevinkorfmann/stdgrimmsim)
-[![tests](https://img.shields.io/badge/tests-680%20passed-228B22)](https://github.com/kevinkorfmann/stdgrimmsim/actions/workflows/tests.yml)
+[![tests](https://img.shields.io/github/actions/workflow/status/kevinkorfmann/stdgrimmsim/tests.yml?branch=main&label=tests)](https://github.com/kevinkorfmann/stdgrimmsim/actions/workflows/tests.yml)
 
 **Install:** `pip install stdgrimmsim` · **Docs:** [stdgrimmsim.readthedocs.io](https://stdgrimmsim.readthedocs.io/en/latest/)
 
