@@ -1,13 +1,12 @@
 # stdgrimmsim
 
-> **Disclaimer:** This project is **under development**. Do not use it in production or for serious work yet. APIs and the catalog may change without notice.
-
 [![PyPI version](https://img.shields.io/pypi/v/stdgrimmsim?color=8B7355)](https://pypi.org/project/stdgrimmsim/)
 [![PyPI downloads](https://img.shields.io/pypi/dm/stdgrimmsim?color=6B5B4E)](https://pypi.org/project/stdgrimmsim/)
 [![Python 3.10+](https://img.shields.io/pypi/pyversions/stdgrimmsim?color=5C4A3A)](https://pypi.org/project/stdgrimmsim/)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-3C2F2F.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Docs](https://img.shields.io/github/actions/workflow/status/kevinkorfmann/stdgrimmsim/docs.yml?branch=main&label=docs&color=7A6652)](https://stdgrimmsim.readthedocs.io/en/latest/)
 [![codecov](https://img.shields.io/codecov/c/gh/kevinkorfmann/stdgrimmsim?color=4A3C2A)](https://codecov.io/gh/kevinkorfmann/stdgrimmsim)
+[![tests](https://img.shields.io/badge/tests-680%20passed-228B22)](https://github.com/kevinkorfmann/stdgrimmsim/actions/workflows/tests.yml)
 
 **Install:** `pip install stdgrimmsim` · **Docs:** [stdgrimmsim.readthedocs.io](https://stdgrimmsim.readthedocs.io/en/latest/)
 
