@@ -17,11 +17,11 @@ and legendary beings from the Grimms' tales and regional traditions.
 
 Forked from [stdvoidsim](https://github.com/popsim-consortium/stdvoidsim) (and ultimately [stdpopsim](https://stdpopsim.org)),
 `stdgrimmsim` provides fictional but population-genetically plausible demographic models
-for creatures and spirits from German-speaking folklore: dwarves (Zwerge), water spirits (Nix),
-mountain spirits (Rübezahl), Frau Holle, the Loreley, and Black Forest spirits. All models use
+for creatures and spirits from German-speaking folklore: dwarves, water spirits, the Wild Hunt,
+werewolves, Lindwurm, Kobolds, Heinzelmännchen, river fairies, Erlking, Alp, and more. All models use
 realistic population genetic parameters and are fully simulatable with `msprime` and `SLiM`.
 
-**20 species, 30+ demographic models.**
+**14 species, 100 demographic models.**
 
 ## Available Species
 
@@ -31,13 +31,16 @@ realistic population genetic parameters and are fully simulatable with `msprime`
 |--------|-------------------------------|--------------------------|----------|----------|--------|
 | ZweBerg | *Zwergus bergensis* | Bergzwerg (Mountain Dwarf) | 80,000 | 25 yr | 2 |
 | FraHol | *Holle hesseensis* | Frau Holle | 60,000 | 30 yr | 2 |
+| KobHau | *Koboldus domesticus* | Kobold (house spirit) | 200,000 | 15 yr | 2 |
+| HeiCol | *Heinzelmaennchen coloniensis* | Heinzelmännchen (Cologne) | 300,000 | 8 yr | 2 |
 
-### Water & river spirits (Rhine, Elbe)
+### Water & river spirits
 
 | ID | Species | Common Name | Pop Size | Gen Time | Ploidy |
 |--------|-------------------------------|--------------------------|----------|----------|--------|
 | NixRhe | *Nixus rhenanus* | Nix (Rhine water spirit) | 45,000 | 50 yr | 2 |
 | LorRhe | *Loreley rhenanus* | Loreley (Rhine rock spirit) | 35,000 | 40 yr | 2 |
+| FeeFlu | *Flussfee aquaticus* | Flussfee (River Fairy) | 55,000 | 30 yr | 2 |
 
 ### Mountain & regional mythology
 
@@ -45,6 +48,16 @@ realistic population genetic parameters and are fully simulatable with `msprime`
 |--------|-------------------------------|--------------------------|----------|----------|--------|
 | RueHar | *Ruebezahl harzensis* | Rübezahl (mountain spirit) | 15,000 | 100 yr | 2 |
 | SchWar | *Silvani schwarzwaldensis* | Black Forest spirit | 120,000 | 20 yr | 2 |
+| LinDra | *Lindwurm draconicus* | Lindwurm (Dragon) | 2,000 | 200 yr | 2 |
+
+### Beings & hauntings
+
+| ID | Species | Common Name | Pop Size | Gen Time | Ploidy |
+|--------|-------------------------------|--------------------------|----------|----------|--------|
+| WilJae | *Wildjaeger germanicus* | Wilde Jagd (Wild Hunt) | 25,000 | 60 yr | 2 |
+| WerWol | *Werwolfus lupinus* | Werwolf (Werewolf) | 10,000 | 20 yr | 2 |
+| ErlKoe | *Erlkoenig sylvestris* | Erlkönig (Alder King) | 30,000 | 45 yr | 2 |
+| AlpNac | *Alpus nocturnalis* | Alp (nightmare spirit) | 150,000 | 10 yr | 2 |
 
 ### Dragons & medieval bestiary
 
