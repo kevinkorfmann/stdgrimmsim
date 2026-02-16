@@ -36,6 +36,16 @@ associated with the well, snow, and the realm beyond (Hesse/Thuringia).
 
 .. speciescatalog:: FraHol
 
+**Heinzelmaennchen** (*Heinzelmaennchen coloniensis*) — The helpful elves of Cologne
+who secretly did the townspeople's work at night, until a tailor's wife spied on them (Kopisch 1836).
+
+.. speciescatalog:: HeiCol
+
+**Kobold** (*Koboldus domesticus*) — House spirits bound to hearth and home,
+ranging from helpful household helpers to mischievous mine spirits (Berggeist).
+
+.. speciescatalog:: KobHau
+
 
 .. _water-river-spirits:
 
@@ -50,6 +60,32 @@ Water & river spirits
 
 .. speciescatalog:: LorRhe
 
+**Flussfee** (*Flussfee aquaticus*) — River fairies of the Rhine tributaries
+(Main, Moselle, Neckar), linked to regional German river folklore.
+
+.. speciescatalog:: FeeFlu
+
+
+.. _forest-spirits:
+
+Forest & nocturnal spirits
+==========================
+
+**Erlkoenig** (*Erlkoenig sylvestris*) — The Alder King of Goethe's ballad
+and Herder's Danish Ellerkonge translation, haunting forest paths at dusk.
+
+.. speciescatalog:: ErlKoe
+
+**Alp** (*Alpus nocturnalis*) — The nightmare spirit (Alpdruck) that sits
+on sleepers' chests, widespread in German and Alpine folklore.
+
+.. speciescatalog:: AlpNac
+
+**Wilde Jagd** (*Wildjaeger germanicus*) — The Wild Hunt, a spectral
+host of riders that sweeps across the night sky (Grimm, *Deutsche Mythologie*).
+
+.. speciescatalog:: WilJae
+
 
 .. _mountain-regional-mythology:
 
@@ -63,6 +99,23 @@ Mountain & regional mythology
 **Black Forest spirit** (*Silvani schwarzwaldensis*) — Forest spirits of the Schwarzwald.
 
 .. speciescatalog:: SchWar
+
+
+.. _shape-shifters-beasts:
+
+Shape-shifters & mythical beasts
+================================
+
+**Werwolf** (*Werwolfus lupinus*) — Werewolves from German trial records
+and folklore, particularly the Rhineland, Bavaria, and Livonian traditions.
+
+.. speciescatalog:: WerWol
+
+**Lindwurm** (*Lindwurm draconicus*) — The wingless dragon of Germanic
+legend (Nibelungenlied's Fafnir, Klagenfurt Lindwurm), with long generation
+times and small populations driven near extinction by hero-slaying.
+
+.. speciescatalog:: LinDra
 
 
 .. _generic-models:
