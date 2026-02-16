@@ -2,12 +2,12 @@
 
 > **Disclaimer:** This project is **under development**. Do not use it in production or for serious work yet. APIs and the catalog may change without notice.
 
-[![PyPI version](https://img.shields.io/pypi/v/stdgrimmsim)](https://pypi.org/project/stdgrimmsim/)
-[![PyPI downloads](https://img.shields.io/pypi/dm/stdgrimmsim)](https://pypi.org/project/stdgrimmsim/)
-[![Python 3.10+](https://img.shields.io/pypi/pyversions/stdgrimmsim)](https://pypi.org/project/stdgrimmsim/)
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Docs](https://github.com/kevinkorfmann/stdgrimmsim/actions/workflows/docs.yml/badge.svg?branch=main)](https://stdgrimmsim.readthedocs.io/en/latest/)
-[![codecov](https://codecov.io/gh/kevinkorfmann/stdgrimmsim/graph/badge.svg)](https://codecov.io/gh/kevinkorfmann/stdgrimmsim)
+[![PyPI version](https://img.shields.io/pypi/v/stdgrimmsim?color=8B7355)](https://pypi.org/project/stdgrimmsim/)
+[![PyPI downloads](https://img.shields.io/pypi/dm/stdgrimmsim?color=6B5B4E)](https://pypi.org/project/stdgrimmsim/)
+[![Python 3.10+](https://img.shields.io/pypi/pyversions/stdgrimmsim?color=5C4A3A)](https://pypi.org/project/stdgrimmsim/)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-3C2F2F.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Docs](https://img.shields.io/github/actions/workflow/status/kevinkorfmann/stdgrimmsim/docs.yml?branch=main&label=docs&color=7A6652)](https://stdgrimmsim.readthedocs.io/en/latest/)
+[![codecov](https://img.shields.io/codecov/c/gh/kevinkorfmann/stdgrimmsim?color=4A3C2A)](https://codecov.io/gh/kevinkorfmann/stdgrimmsim)
 
 **Install:** `pip install stdgrimmsim` · **Docs:** [stdgrimmsim.readthedocs.io](https://stdgrimmsim.readthedocs.io/en/latest/)
 
@@ -21,7 +21,7 @@ for creatures and spirits from German-speaking folklore: dwarves (Zwerge), water
 mountain spirits (Rübezahl), Frau Holle, the Loreley, and Black Forest spirits. All models use
 realistic population genetic parameters and are fully simulatable with `msprime` and `SLiM`.
 
-**6 species, 12 demographic models.**
+**20 species, 30+ demographic models.**
 
 ## Available Species
 
@@ -45,6 +45,28 @@ realistic population genetic parameters and are fully simulatable with `msprime`
 |--------|-------------------------------|--------------------------|----------|----------|--------|
 | RueHar | *Ruebezahl harzensis* | Rübezahl (mountain spirit) | 15,000 | 100 yr | 2 |
 | SchWar | *Silvani schwarzwaldensis* | Black Forest spirit | 120,000 | 20 yr | 2 |
+
+### Dragons & medieval bestiary
+
+| ID | Species | Common Name | Pop Size | Gen Time | Ploidy |
+|--------|-------------------------------|--------------------------|----------|----------|--------|
+| LinDra | *Lindwormis draco* | Lindworm (dragon) | 5,000 | 60 yr | 2 |
+| DraFeu | *Draco feuerspeiensis* | Firedrake (fire dragon) | 8,000 | 50 yr | 2 |
+| BasRex | *Basiliscus rex* | Basilisk (serpent king) | 5,000 | 80 yr | 2 |
+
+### Pre-Christian & tribal Germanic
+
+| ID | Species | Common Name | Pop Size | Gen Time | Ploidy |
+|--------|-------------------------------|--------------------------|----------|----------|--------|
+| JotRie | *Jotunnus riesensis* | Frost Giant (Jotun) | 3,000 | 150 yr | 2 |
+| ValKri | *Valkyria kriegensis* | Valkyrie (battle chooser) | 12,000 | 100 yr | 2 |
+
+### 17th-18th century folklore
+
+| ID | Species | Common Name | Pop Size | Gen Time | Ploidy |
+|--------|-------------------------------|--------------------------|----------|----------|--------|
+| HexWal | *Hexara walpurgis* | Walpurgis Witch (Brocken) | 25,000 | 30 yr | 2 |
+| MueGei | *Muellerin geisterhaft* | Mill Ghost (Mühlengeist) | 40,000 | 20 yr | 2 |
 
 ## Quick Start
 
