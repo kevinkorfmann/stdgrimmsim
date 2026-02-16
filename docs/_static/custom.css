@@ -1,5 +1,5 @@
 /* ==========================================================================
-   stdvoidsim docs – cosmic horror / grimoire styling (Furo theme)
+   stdgrimmsim docs – Brothers Grimm sepia / antiquarian styling (Furo theme)
    ========================================================================== */
 
 @import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap");
@@ -76,7 +76,7 @@ article .content {
 }
 
 .admonition.tip {
-    border-left-color: #6b8e6b;
+    border-left-color: #7A6B52;
 }
 
 /* ----- Links ----- */

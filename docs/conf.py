@@ -104,19 +104,19 @@ html_context = {
 html_theme_options = {
     "sidebar_hide_name": False,
     "light_css_variables": {
-        "color-brand-primary": "#6b5b95",
-        "color-brand-content": "#4a3f6d",
-        "color-admonition-background": "#f0e6f6",
-        "color-highlighted-background": "#2d2a3a",
-        "color-guide-background": "#f5f2f7",
+        "color-brand-primary": "#6B5B4E",
+        "color-brand-content": "#5C4A3A",
+        "color-admonition-background": "#F5F0E8",
+        "color-highlighted-background": "#3C2F2F",
+        "color-guide-background": "#FAF6F0",
     },
     "dark_css_variables": {
-        "color-brand-primary": "#9b8bb8",
-        "color-brand-content": "#b8a9d4",
-        "color-background-primary": "#1a1823",
-        "color-background-secondary": "#221f2e",
-        "color-admonition-background": "#2a2535",
-        "color-highlighted-background": "#2d2a3a",
+        "color-brand-primary": "#B8A48E",
+        "color-brand-content": "#C9B99A",
+        "color-background-primary": "#1E1A16",
+        "color-background-secondary": "#2A2420",
+        "color-admonition-background": "#2E2822",
+        "color-highlighted-background": "#3C2F2F",
     },
 }
 
