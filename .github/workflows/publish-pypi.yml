@@ -1,6 +1,6 @@
-# Publish stdvoidsim to PyPI when a version tag (v*.*.*) is pushed.
+# Publish stdgrimmsim to PyPI when a version tag (v*.*.*) is pushed.
 # Uses PyPI Trusted Publishing (OIDC); no API token needed.
-# Configure the publisher at https://pypi.org/manage/project/stdvoidsim/settings/publishing/
+# Configure the publisher at https://pypi.org/manage/project/stdgrimmsim/settings/publishing/
 # Then: git tag v0.1.0 && git push origin v0.1.0
 name: Publish to PyPI
 
