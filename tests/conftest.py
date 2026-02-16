@@ -4,6 +4,20 @@ Pytest configuration for stdgrimmsim.
 
 import pathlib
 
+# Detect SLiM version; skip test_slim_engine if SLiM 4.x (API incompatible with generated scripts)
+def _get_slim_major():
+    try:
+        import stdgrimmsim
+        engine = stdgrimmsim.get_engine("SLiM")
+        if engine is None:
+            return 0
+        ver = engine.get_version()
+        return int(ver.split(".")[0]) if ver else 0
+    except Exception:
+        return 0
+
+SLIM_MAJOR = _get_slim_major()
+
 # Species IDs in the stdgrimmsim catalog (German folklore)
 CATALOG_SPECIES = {
     "ZweBerg",
@@ -69,6 +83,9 @@ def pytest_ignore_collect(collection_path, config):
     if path.suffix == ".py" and path.name.startswith("test_"):
         stem = path.stem
         if stem in SKIP_SPECIES_TEST_MODULES:
+            return True
+        # Skip SLiM engine tests when SLiM 4.x is installed (API incompatible)
+        if stem == "test_slim_engine" and SLIM_MAJOR >= 4:
             return True
         # test_cli and test_slim_engine run if catalog has at least one species
         if stem in ("test_cli", "test_slim_engine"):

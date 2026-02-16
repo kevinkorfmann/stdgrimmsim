@@ -2,24 +2,43 @@
 Upcoming
 --------
 
-**stdgrimmsim fork (German folklore)**:
+*No upcoming changes yet.*
 
-- Fork from stdvoidsim adapted for German folklore, fairy tales (Grimm), and
-  regional mythology. Package renamed to ``stdgrimmsim``.
-- Catalog replaced with 6 species: ZweBerg (mountain dwarves), NixRhe (Nix),
-  RueHar (Rübezahl), FraHol (Frau Holle), LorRhe (Loreley), SchWar (Black Forest spirit).
-- Geographic focus: Black Forest, Harz, Rhine, Riesengebirge. 12 demographic models total.
+--------------------
+[0.1.0] - 2026-02-15
+--------------------
 
-**Bug fixes**:
+First release of **stdgrimmsim**: a stdpopsim-based library of demographic and genome
+models for beings from German folklore, fairy tales (Grimm), and regional mythology.
 
-- The 'positive' and 'negative' proportions were swapped in the PosNeg_R24 DFE.
-    (:user:`bhaller`, :user:`petrelharp`, :pr:`1736`)
+**Catalog**
 
-**Breaking changes**:
+- **32 species** and **150 demographic models** (all diploid), with made-up but
+  population-genetically plausible parameters.
+- Species categories: Fairy tale & Grimm (mountain dwarves, Frau Holle, Heinzelmännchen,
+  Kobold), Water & river spirits (Nix, Loreley, Flussfee), Forest & nocturnal spirits
+  (Erlking, Alp, Wilde Jagd), Mountain & regional mythology (Rübezahl, Black Forest spirit),
+  Shape-shifters & mythical beasts (Werwolf, Lindwurm), and others.
+- Geographic focus: Black Forest, Harz, Rhine, Bavaria, Prussia, Saxony, Riesengebirge,
+  and related regions. Demographies tied to narrative (e.g. Frau Holle's well and snow
+  realm, Loreley rock, Rübezahl in the Riesengebirge).
+- Generic demographic models (e.g. piecewise constant size, isolation-with-migration)
+  usable with any species.
 
-- Species now have a `separate_sexes` property, which is used by the SLiM engine
-  to run a sexual WF model for these species. Previously, a hermaphroditic WF
-  model was used for all species. (:user:`petrelharp`, :pr:`1766`)
+**Documentation**
+
+- Full catalog with genome summaries, chromosomes, and demographic model descriptions.
+- Demography schematic figures (PNG) for all 150 models; generate with
+  ``python docs/generate_demography_figures.py``.
+- "All demographic models" page listing every model with links into the catalog.
+- Installation, tutorial, CLI reference, and API docs.
+
+**Implementation**
+
+- Fork of stdpopsim: same API, engines (msprime, SLiM), and workflow; only the species
+  catalog is replaced. Demes-based demographic models.
+- Install: ``pip install stdgrimmsim``. Docs: https://stdgrimmsim.readthedocs.io/
+  Source: https://github.com/kevinkorfmann/stdgrimmsim
 
 --------------------
 [0.3.0] - 2025-03-18

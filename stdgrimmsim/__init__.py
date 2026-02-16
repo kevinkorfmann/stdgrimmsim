@@ -5,7 +5,7 @@ try:
     from . import _version
 
     __version__ = _version.version
-except ImportError:
+except (ImportError, SyntaxError):
     pass
 
 # Internal modules. Import here to flatten the namespace.

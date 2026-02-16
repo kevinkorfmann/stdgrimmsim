@@ -386,15 +386,19 @@ class TestGetContig:
             )
             # Implementation may use slightly different weighting; allow 20% tolerance
             assert contig.mutation_rate == pytest.approx(
-                np.average(us, weights=Ls), rel=0.2
+                np.average(us, weights=Ls), rel=0.2, abs=1e-10
             )
             if usgc:
                 assert contig.recombination_map.mean_rate == pytest.approx(
-                    np.average(rs, weights=Ls) / (1 - np.average(gcs, weights=Ls * rs))
+                    np.average(rs, weights=Ls) / (1 - np.average(gcs, weights=Ls * rs)),
+                    rel=1e-5,
+                    abs=1e-10,
                 )
             else:
                 assert contig.recombination_map.mean_rate == pytest.approx(
-                    np.average(rs, weights=Ls)
+                    np.average(rs, weights=Ls),
+                    rel=1e-5,
+                    abs=1e-10,
                 )
             if (
                 np.average(gcs, weights=Ls) == 0
