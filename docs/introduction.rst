@@ -8,10 +8,13 @@ This is the documentation for ``stdgrimmsim``, a library of population
 genetic simulation models for German folklore, fairy tales, and mythology.
 
 ``stdgrimmsim`` is a fork of ``stdvoidsim``/``stdpopsim`` that provides
-6 species from German-speaking folklore: dwarves (Zwerge), water spirits (Nix),
-mountain spirits (Rübezahl), Frau Holle, the Loreley, and Black Forest spirits.
+32 species from German-speaking folklore: dwarves (Zwerge), water spirits (Nix),
+mountain spirits (Rübezahl), Frau Holle, the Loreley, Black Forest spirits,
+Bavarian (Wolpertinger, Berchta, Moosweib), Prussian (Puk, East Prussian Baltic,
+Masurian lakes), Saxony (Erzgebirge), Pomerania, Bremen musicians, and more.
 Each species has made-up but population-genetically plausible genomes and
-demographic models tied to geographic regions (Rhine, Harz, Schwarzwald, etc.).
+150 demographic models tied to geographic regions (Bavaria, Prussia, Rhine,
+Harz, Schwarzwald, Thuringia, etc.).
 
 Under the hood, ``stdgrimmsim`` relies on
 `msprime <https://tskit.dev/software/msprime.html>`_ and

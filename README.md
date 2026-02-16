@@ -19,7 +19,7 @@ Forked from [stdvoidsim](https://github.com/popsim-consortium/stdvoidsim) (and u
 `stdgrimmsim` provides fictional but population-genetically plausible demographic models
 for creatures and spirits from German-speaking folklore. Demographics are tied to real regions (Upper Bavaria, Bavarian Forest, East Prussia, Kurische Nehrung, Masurian Lakes, etc.). All models use realistic population genetic parameters and are fully simulatable with `msprime` and `SLiM`.
 
-**26 species, 160+ demographic models** — **Bavaria**, **Prussia**, **Saxony**, **Pomerania**, **Lower Saxony/Bremen**, **Thuringia/Hesse**, and more Grimm fairy-tale species.
+**32 species, 150 demographic models** — **Bavaria**, **Prussia**, **Saxony**, **Pomerania**, **Lower Saxony/Bremen**, **Thuringia/Hesse**, and more Grimm fairy-tale species.
 
 ## Available Species
 

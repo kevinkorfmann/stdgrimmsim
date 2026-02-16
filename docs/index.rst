@@ -20,7 +20,7 @@ First steps
 -----------
 
 - **Install:** :ref:`Installation <sec_installation>` — get ``stdgrimmsim`` on your machine.
-- **Explore:** :ref:`Catalog <sec_catalog>` — 6 species and 12 demographic models.
+- **Explore:** :ref:`Catalog <sec_catalog>` — 32 species and 150 demographic models.
 - **Run:** :ref:`Tutorial <sec_tutorial>` — examples and workflows.
 
 .. admonition:: Quick run

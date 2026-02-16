@@ -5,9 +5,10 @@ Catalog
 =======
 
 This catalog lists every species from German folklore and mythology available
-for simulation in ``stdgrimmsim``. Each has made-up but population-genetically
-plausible genomes and demographic histories tied to geographic regions (Black Forest,
-Harz, Rhine, etc.) and to Grimm fairy tales where relevant.
+for simulation in ``stdgrimmsim`` — 32 species and 150 demographic models.
+Each has made-up but population-genetically plausible genomes and demographic
+histories tied to geographic regions (Black Forest, Harz, Rhine, Bavaria,
+Prussia, Saxony, etc.) and to Grimm fairy tales where relevant.
 
 1. Which **chromosome** (:class:`.Genome` object)?
 2. Which **model of demographic history** (:class:`.DemographicModel` object)?
