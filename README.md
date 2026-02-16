@@ -1,5 +1,7 @@
 # stdgrimmsim
 
+> **Disclaimer:** This project is **under development**. Do not use it in production or for serious work yet. APIs and the catalog may change without notice.
+
 [![PyPI version](https://img.shields.io/pypi/v/stdgrimmsim)](https://pypi.org/project/stdgrimmsim/)
 [![PyPI downloads](https://img.shields.io/pypi/dm/stdgrimmsim)](https://pypi.org/project/stdgrimmsim/)
 [![Python 3.10+](https://img.shields.io/pypi/pyversions/stdgrimmsim)](https://pypi.org/project/stdgrimmsim/)
