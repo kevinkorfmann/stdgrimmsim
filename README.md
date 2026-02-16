@@ -12,16 +12,14 @@
 **Install:** `pip install stdgrimmsim` · **Docs:** [stdgrimmsim.readthedocs.io](https://stdgrimmsim.readthedocs.io/en/latest/)
 
 A community-maintained library of population genetic simulation models for
-**German folklore, fairy tales, and mythology**, with a focus on **geographic regions**
-and legendary beings from the Grimms' tales and regional traditions.
+**German folklore, fairy tales, and mythology**, with a strong focus on **geographic regions**:
+**Bavaria** (Bayern), **Prussia** (Preußen, East Prussia, Masuria), Rhine, Harz, Black Forest, and more.
 
 Forked from [stdvoidsim](https://github.com/popsim-consortium/stdvoidsim) (and ultimately [stdpopsim](https://stdpopsim.org)),
 `stdgrimmsim` provides fictional but population-genetically plausible demographic models
-for creatures and spirits from German-speaking folklore: dwarves, water spirits, the Wild Hunt,
-werewolves, Lindwurm, Kobolds, Heinzelmännchen, river fairies, Erlking, Alp, and more. All models use
-realistic population genetic parameters and are fully simulatable with `msprime` and `SLiM`.
+for creatures and spirits from German-speaking folklore. Demographics are tied to real regions (Upper Bavaria, Bavarian Forest, East Prussia, Kurische Nehrung, Masurian Lakes, etc.). All models use realistic population genetic parameters and are fully simulatable with `msprime` and `SLiM`.
 
-**14 species, 100 demographic models.**
+**26 species, 160+ demographic models** — **Bavaria**, **Prussia**, **Saxony**, **Pomerania**, **Lower Saxony/Bremen**, **Thuringia/Hesse**, and more Grimm fairy-tale species.
 
 ## Available Species
 
@@ -30,9 +28,13 @@ realistic population genetic parameters and are fully simulatable with `msprime`
 | ID | Species | Common Name | Pop Size | Gen Time | Ploidy |
 |--------|-------------------------------|--------------------------|----------|----------|--------|
 | ZweBerg | *Zwergus bergensis* | Bergzwerg (Mountain Dwarf) | 80,000 | 25 yr | 2 |
-| FraHol | *Holle hesseensis* | Frau Holle | 60,000 | 30 yr | 2 |
+| FraHol | *Holle hesseensis* | Frau Holle (KHM 24) | 60,000 | 30 yr | 2 |
 | KobHau | *Koboldus domesticus* | Kobold (house spirit) | 200,000 | 15 yr | 2 |
 | HeiCol | *Heinzelmaennchen coloniensis* | Heinzelmännchen (Cologne) | 300,000 | 8 yr | 2 |
+| RumSti | *Rumpelstilzchen thuringiensis* | Rumpelstiltskin (KHM 55) | 48,000 | 22 yr | 2 |
+| SieRab | *Corvus septem ravens* | Seven Ravens (KHM 25) | 65,000 | 18 yr | 2 |
+| BreSta | *Bremer stadtmusikanten* | Town Musicians of Bremen (KHM 27) | 88,000 | 14 yr | 2 |
+| AscPut | *Aschenputtel doves* | Cinderella doves (KHM 21) | 420,000 | 8 yr | 2 |
 
 ### Water & river spirits
 
@@ -41,6 +43,43 @@ realistic population genetic parameters and are fully simulatable with `msprime`
 | NixRhe | *Nixus rhenanus* | Nix (Rhine water spirit) | 45,000 | 50 yr | 2 |
 | LorRhe | *Loreley rhenanus* | Loreley (Rhine rock spirit) | 35,000 | 40 yr | 2 |
 | FeeFlu | *Flussfee aquaticus* | Flussfee (River Fairy) | 55,000 | 30 yr | 2 |
+
+### Bavaria (Bayern)
+
+| ID | Species | Common Name | Pop Size | Gen Time | Ploidy |
+|--------|-------------------------------|--------------------------|----------|----------|--------|
+| WolBay | *Wolpertingerus bavarius* | Wolpertinger (Bavarian hybrid) | 95,000 | 12 yr | 2 |
+| BerAlp | *Berchta alpina* | Berchta / Perchta (Alpine winter) | 42,000 | 35 yr | 2 |
+| MooBay | *Moosweib bavaricum* | Moosweib (Bavarian Forest) | 38,000 | 28 yr | 2 |
+
+Demographic models use **Upper Bavaria (Oberbayern)**, **Bavarian Forest (Bayrischer Wald)**, **Allgäu**, **Salzburg**, **Tyrol**, **Oberpfalz**.
+
+### Prussia (Preußen)
+
+| ID | Species | Common Name | Pop Size | Gen Time | Ploidy |
+|--------|-------------------------------|--------------------------|----------|----------|--------|
+| PukPru | *Puk prussicus* | Puk (Prussian house spirit) | 180,000 | 18 yr | 2 |
+| OstBal | *Ostpreussius balticus* | East Prussian Baltic spirit | 28,000 | 55 yr | 2 |
+| MasLak | *Masurius lacustris* | Masurian lake spirit (Masuren) | 32,000 | 48 yr | 2 |
+
+Demographic models use **East Prussia (Ostpreußen)**, **West Prussia**, **Berlin–Brandenburg**, **Kurische Nehrung (Curonian Spit)**, **Memelland**, **Samland**, **Masurian Lakes**, **Spirdingsee (Śniardwy)**, **Mauersee (Mamry)**.
+
+### Saxony (Sachsen) & Pomerania (Pommern)
+
+| ID | Species | Common Name | Pop Size | Gen Time | Ploidy |
+|--------|-------------------------------|--------------------------|----------|----------|--------|
+| SaxErz | *Bergmann erzgebirgensis* | Erzgebirge spirit (Ore Mountains) | 72,000 | 28 yr | 2 |
+| PomBal | *Pommersch balticus* | Pomeranian Baltic spirit | 36,000 | 52 yr | 2 |
+
+Demographic models use **Erzgebirge**, **Vogtland**, **Dresden region** (Saxony); **Usedom**, **Rügen**, **Stettin** (Pomeranian Baltic).
+
+### Thuringia & Hesse (Grimm heartland)
+
+Rumpelstiltskin (RumSti) and other Grimm species use **Thuringia (Thüringen)** and **Hesse (Hessen)** populations — the core Grimm fairy-tale region.
+
+### Lower Saxony & Bremen
+
+Town Musicians of Bremen (BreSta) use **Bremen**, **Lower Saxony (Niedersachsen)**, **Lüneburg Heath (Lüneburger Heide)**.
 
 ### Mountain & regional mythology
 
@@ -113,6 +152,12 @@ stdgrimmsim ZweBerg -d BlackForest_1D12 -o dwarves.trees -L 100000 BlackForest:1
 
 # Simulate Nix (water spirit) from Rhine and Elbe
 stdgrimmsim NixRhe -d RhineElbe_2D12 -o nix.trees -L 50000 Rhine:10 Elbe:10
+
+# Bavaria: Wolpertinger (Upper Bavaria + Bavarian Forest)
+stdgrimmsim WolBay -d UpperBavariaBavarianForest_2D12 -o wolpertinger.trees -L 50000 UpperBavaria:10 BavarianForest:10
+
+# Prussia: Puk (East Prussia and Berlin–Brandenburg)
+stdgrimmsim PukPru -d EastPrussiaBerlinBrandenburg_2D12 -o puk.trees -L 50000 EastPrussia:10 BerlinBrandenburg:10
 ```
 
 ## Installation
@@ -168,7 +213,7 @@ Each species has:
 - **Made-up but internally consistent genome**: chromosome counts, lengths, ploidy,
   mutation rates, and recombination rates chosen to reflect the creature's biology
 - **Demographic models**: population size changes, bottlenecks, splits, and migrations
-  that reflect regional folklore and fairy-tale settings (Black Forest, Harz, Rhine, etc.)
+  that reflect regional folklore and fairy-tale settings (Bavaria, Prussia, Black Forest, Harz, Rhine, Masuria, etc.)
 - **Simulatable parameters**: all values are chosen so that simulations complete in
   reasonable time and produce meaningful coalescent trees
 
