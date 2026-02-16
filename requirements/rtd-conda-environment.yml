@@ -1,0 +1,18 @@
+name: stdgrimmsim-rtd
+
+channels:
+  - conda-forge
+  - bioconda
+
+dependencies:
+  - python=3.12
+  - gsl
+  - scipy
+  - sphinx-argparse
+  - sphinx-issues
+  - sphinxcontrib-programoutput
+  - demes
+  - demesdraw
+  - setuptools-scm
+  - furo
+  - sphinx-copybutton

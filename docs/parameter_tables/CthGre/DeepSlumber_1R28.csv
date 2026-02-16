@@ -1,0 +1,7 @@
+Population size,500,Modern awake phase (R'lyeh)
+Population size,50,Dormant bottleneck
+Population size,5000,Ancient pre-slumber era
+Epoch time (gen.),50000,Dormant phase start
+Epoch time (gen.),500000,Pre-slumber era start
+Generation time (yrs.),10000,Generation time
+Mutation rate,1e-10,Per-base per-generation mutation rate

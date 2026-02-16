@@ -1,0 +1,173 @@
+/* ==========================================================================
+   stdvoidsim docs – cosmic horror / grimoire styling (Furo theme)
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap");
+
+/* ----- Typography ----- */
+:root {
+    --stdvoid-font-heading: "Crimson Pro", "Libre Baskerville", Georgia, serif;
+    --stdvoid-font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --stdvoid-line-height: 1.65;
+    --stdvoid-content-max-width: 52em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--stdvoid-font-heading);
+    letter-spacing: 0.02em;
+}
+
+.content .section > h1,
+.content .section > h2,
+.content .section > h3 {
+    border-bottom-color: var(--color-border);
+}
+
+/* Slightly more readable body and line-height */
+article .content p,
+article .content li {
+    line-height: var(--stdvoid-line-height);
+}
+
+/* Constrain main content width for long lines */
+article .content {
+    max-width: var(--stdvoid-content-max-width);
+}
+
+/* ----- Sidebar logo: round ----- */
+.sidebar-logo,
+.sidebar-logo img,
+.sidebar-container .sidebar-logo img {
+    border-radius: 50%;
+}
+
+/* ----- Code blocks: incantation style ----- */
+.highlight,
+.highlight pre {
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+}
+
+.highlight {
+    background: var(--color-background-secondary);
+}
+
+/* Copy button stays readable */
+.copybtn {
+    opacity: 0.8;
+}
+
+.copybtn:hover {
+    opacity: 1;
+}
+
+/* ----- Admonitions ----- */
+.admonition {
+    border-radius: 8px;
+    border-left-width: 4px;
+}
+
+.admonition.note {
+    border-left-color: var(--color-brand-primary);
+}
+
+.admonition.warning {
+    border-left-color: #c9a227;
+}
+
+.admonition.tip {
+    border-left-color: #6b8e6b;
+}
+
+/* ----- Links ----- */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ----- Home page: cover and catalog at a glance ----- */
+/* Blockquote (epigraph) on index */
+.epigraph {
+    margin: 1.5em 0;
+    padding: 0.75em 1.25em;
+    font-family: var(--stdvoid-font-heading);
+    font-style: italic;
+    border-left: 4px solid var(--color-brand-primary);
+    background: var(--color-background-secondary);
+    border-radius: 0 8px 8px 0;
+}
+
+/* Catalog category cards on index */
+.catalog-at-a-glance {
+    display: grid;
+    gap: 0.75em;
+    margin: 1.25em 0;
+}
+
+/* Card style for each top-level list item (category) */
+.catalog-at-a-glance ul > li {
+    padding: 0.6em 1em;
+    background: var(--color-background-secondary);
+    border-radius: 8px;
+    border-left: 4px solid var(--color-brand-primary);
+    margin-bottom: 0.5em;
+    list-style: none;
+    margin-left: 0;
+}
+
+.catalog-at-a-glance ul > li::before {
+    content: none;
+}
+
+.catalog-at-a-glance ul > li > a:first-of-type {
+    font-family: var(--stdvoid-font-heading);
+    font-weight: 600;
+}
+
+.catalog-at-a-glance ul > li > ul {
+    font-size: 0.95em;
+    color: var(--color-foreground-muted);
+    margin: 0.35em 0 0 0;
+    padding-left: 1.2em;
+}
+
+.catalog-at-a-glance ul > li > ul li {
+    margin-bottom: 0.15em;
+}
+
+/* Quick run callout */
+.quick-run {
+    margin: 1.5em 0;
+    padding: 1em 1.25em;
+    background: var(--color-background-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+}
+
+.quick-run .code-block {
+    margin-top: 0.5em;
+}
+
+/* ----- Footer ----- */
+.footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    color: var(--color-foreground-muted);
+}
+
+/* ----- Responsive: catalog list on narrow screens ----- */
+@media (max-width: 67em) {
+    article .content {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 46em) {
+    .catalog-at-a-glance .species-list {
+        font-size: 0.9em;
+    }
+}

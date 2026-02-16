@@ -1,0 +1,8 @@
+Population size,500,R'lyeh population size
+Population size,2000,Pacific cultists modern size
+Population size,100,Pacific cultists bottleneck
+Population size,5000,Ancestral population size
+Epoch time (gen.),10000,Pacific cultists bottleneck time
+Epoch time (gen.),100000,Population split time
+Generation time (yrs.),10000,Generation time
+Mutation rate,1e-10,Per-base per-generation mutation rate

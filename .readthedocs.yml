@@ -1,0 +1,28 @@
+# .readthedocs.yml
+# Read the Docs configuration file
+# See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
+
+# Required
+version: 2
+
+build:
+  os: ubuntu-22.04
+  tools:
+    python: "mambaforge-23.11"
+  jobs:
+    post_checkout:
+      - git fetch --unshallow || true
+
+sphinx:
+  builder: html
+  configuration: docs/conf.py
+  fail_on_warning: false
+
+conda:
+  environment: requirements/rtd-conda-environment.yml
+
+python:
+  # Install the local package using pip so that stdgrimmsim is in the path.
+  install:
+    - method: pip
+      path: .
