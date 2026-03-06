@@ -13,7 +13,7 @@
 A community-maintained library of population genetic simulation models for
 **German folklore, fairy tales (Grimm), and regional mythology**.
 
-**32 species · 134 demographic models** across 4 complexity levels.
+**32 species · 150 demographic models** across 4 complexity levels.
 
 > See also: [**stdvoidsim**](https://github.com/kevinkorfmann/stdvoidsim) — the companion catalog for stress-testing with extreme Lovecraftian scenarios.
 
@@ -29,7 +29,7 @@ All species are diploid with demographically plausible parameters (Ne from 2,000
 |---|---|---|
 | **Focus** | Diverse training data & benchmarking | Stress-testing & identifiability limits |
 | **Species** | 32 (German folklore) | 40 (Cthulhu Mythos) |
-| **Models** | 134 (1- to 4-population) | 82 (1- and 2-population) |
+| **Models** | 150 (1- to 4-population) | 82 (1- and 2-population) |
 | **Parameter range** | Moderate, plausible | Extreme (Ne=1 to 10^6, gen. time 0.01–10^6 yr) |
 | **Ploidy** | All diploid | Diploid to hexaploid |
 
@@ -39,9 +39,9 @@ Models are organized by population count, allowing systematic sweeps over comple
 
 | Level | Type | Count | Examples |
 |-------|------|-------|----------|
-| **1** | 1-population (constant or piecewise) | 55 | `BlackForest_1D12`, `WellRealm_1D12`, `Rhine_1D12` |
-| **2** | 2-population (split ± migration) | 47 | `HarzBlackForest_2D12`, `RhineElbe_2D12`, `WellSnow_2D12` |
-| **3** | 3-population | 18 | `ThreeRivers_3D12`, `ThreeForestRealms_3D12` |
+| **1** | 1-population (constant or piecewise) | 68 | `BlackForest_1D12`, `WellRealm_1D12`, `Rhine_1D12` |
+| **2** | 2-population (split ± migration) | 48 | `HarzBlackForest_2D12`, `RhineElbe_2D12`, `WellSnow_2D12` |
+| **3** | 3-population | 20 | `ThreeRivers_3D12`, `ThreeForestRealms_3D12` |
 | **4** | 4-population | 14 | `FourMountainRanges_4D12`, `FourRealms_4D12` |
 
 ## Available Species

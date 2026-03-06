@@ -18,13 +18,13 @@ German-speaking folklore.
 population-genetic inference methods and for systematic parameter-space benchmarking.
 
 All species are diploid with demographically plausible parameters
-(Ne from 2,000 to 420,000; generation times 8--200 years). Demographies are tied
+(Ne from 2,000 to 420,000; generation times 8-200 years). Demographies are tied
 to **geographic regions** (Black Forest, Harz, Rhine, Bavaria, Prussia, Saxony) and
 **folkloric narratives** (Frau Holle's well, Rubezahl's mountain, the Loreley rock).
 
-See also: `stdvoidsim <https://github.com/kevinkorfmann/stdvoidsim>`_ --- the
+See also: `stdvoidsim <https://github.com/kevinkorfmann/stdvoidsim>`_ - the
 companion catalog for stress-testing with extreme Lovecraftian scenarios
-(40 species, 82 models; Ne from 1 to 10^6, generation times 0.01--10^6 years).
+(40 species, 80 models; Ne from 1 to 10^6, generation times 0.01-10^6 years).
 
 
 Model complexity taxonomy
@@ -32,18 +32,18 @@ Model complexity taxonomy
 
 Models in ``stdgrimmsim`` are organized by population count into four levels:
 
-- **Level 1** --- 1-population constant or piecewise-constant (55 models).
+- **Level 1** - 1-population constant or piecewise-constant (68 models).
   Simplest baseline for any species.
   Examples: ``BlackForest_1D12``, ``WellRealm_1D12``, ``Rhine_1D12``.
 
-- **Level 2** --- 2-population split +/- migration (47 models).
+- **Level 2** - 2-population split +/- migration (48 models).
   Two populations diverging from an ancestor.
   Examples: ``HarzBlackForest_2D12``, ``RhineElbe_2D12``, ``WellSnow_2D12``.
 
-- **Level 3** --- 3-population (18 models).
+- **Level 3** - 3-population (20 models).
   Examples: ``ThreeRivers_3D12``, ``ThreeForestRealms_3D12``.
 
-- **Level 4** --- 4-population (14 models).
+- **Level 4** - 4-population (14 models).
   Examples: ``FourMountainRanges_4D12``, ``FourRealms_4D12``.
 
 This structured progression allows users to sweep over complexity levels
@@ -76,7 +76,7 @@ The 32 species are grouped into thematic categories:
 
 - **Pre-Christian & Germanic:** Frost Giant (JotRie), Valkyrie (ValKri).
 
-- **17th--18th century:** Walpurgis Witch (HexWal).
+- **17th-18th century:** Walpurgis Witch (HexWal).
 
 
 First steps
@@ -85,7 +85,7 @@ First steps
  - Head to the :ref:`Installation <sec_installation>` page to get ``stdgrimmsim``
    installed on your computer.
 
- - Skim the :ref:`Catalog <sec_catalog>` to see all 32 species and 134 demographic
+ - Skim the :ref:`Catalog <sec_catalog>` to see all 32 species and 150 demographic
    models.
 
  - Read the :ref:`Tutorials <sec_tutorial>` to see some examples of ``stdgrimmsim``
