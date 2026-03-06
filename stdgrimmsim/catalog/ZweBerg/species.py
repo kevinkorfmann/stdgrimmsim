@@ -20,7 +20,7 @@ _mutation_citation = stdgrimmsim.Citation(
     reasons={stdgrimmsim.CiteReason.MUT_RATE, stdgrimmsim.CiteReason.REC_RATE},
 )
 
-_recombination_rate = {c: 2.5e-8 for c in genome_data.data["chromosomes"]}
+_recombination_rate = {c: 5e-8 for c in genome_data.data["chromosomes"]}
 _recombination_rate["mountain_mitogenome"] = 0
 _mutation_rate = {c: 2.5e-8 for c in genome_data.data["chromosomes"]}
 _mutation_rate["mountain_mitogenome"] = 7e-8

@@ -22,7 +22,7 @@ _mutation_citation = stdgrimmsim.Citation(
 
 _recombination_rate = {c: 2.5e-8 for c in genome_data.data["chromosomes"]}
 _recombination_rate["hexen_mitogenome"] = 0
-_mutation_rate = {c: 2.3e-8 for c in genome_data.data["chromosomes"]}
+_mutation_rate = {c: 3e-9 for c in genome_data.data["chromosomes"]}
 _mutation_rate["hexen_mitogenome"] = 7.8e-8
 _species_ploidy = 2
 _ploidy = {c: _species_ploidy for c in genome_data.data["chromosomes"]}
