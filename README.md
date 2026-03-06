@@ -29,7 +29,7 @@ All species are diploid with demographically plausible parameters (Ne from 2,000
 |---|---|---|
 | **Focus** | Diverse training data & benchmarking | Stress-testing & identifiability limits |
 | **Species** | 32 (German folklore) | 40 (Cthulhu Mythos) |
-| **Models** | 150 (1- to 4-population) | 82 (1- and 2-population) |
+| **Models** | 150 (1- to 4-population) | 80 (1- and 2-population) |
 | **Parameter range** | Moderate, plausible | Extreme (Ne=1 to 10^6, gen. time 0.01–10^6 yr) |
 | **Ploidy** | All diploid | Diploid to hexaploid |
 
