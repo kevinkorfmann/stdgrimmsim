@@ -79,6 +79,40 @@ The 32 species are grouped into thematic categories:
 - **17th-18th century:** Walpurgis Witch (HexWal).
 
 
+Prior sampling
+--------------
+
+For ML/DL training, fixed parameters may be limiting. Each species has
+**prior distributions** over its four key parameters (generation time,
+Ne, mutation rate, recombination rate) that can be sampled to generate
+parameter-varied training data.
+
+Priors are LogNormal, centred on the species' point estimate with
+cluster-aware spread (σ). The 32 species are assigned to 4 rate-archetype
+clusters (A-D) that control how widely rates are sampled:
+
+- **Cluster A** (Ancient/Primordial, 8 species): wider rate priors (σ=0.5 for μ, r)
+- **Cluster B** (Elemental/Aquatic, 8 species): moderate rate priors (σ=0.4)
+- **Cluster C** (Woodland/Regional, 8 species): narrow priors (σ=0.3)
+- **Cluster D** (Domestic/Human-adjacent, 8 species): narrow priors (σ=0.3)
+
+Usage::
+
+    import stdgrimmsim
+    import numpy as np
+
+    prior = stdgrimmsim.get_prior("ZweBerg")
+    rng = np.random.default_rng(42)
+
+    # Single draw
+    params = prior.sample(rng)
+    # {'generation_time': 27.4, 'population_size': 58560, ...}
+
+    # Generate 1000 parameter sets for training
+    params = prior.sample(rng, size=1000)
+    # params["generation_time"] -> np.array of shape (1000,)
+
+
 First steps
 -----------
 
