@@ -20,9 +20,9 @@ _mutation_citation = stdgrimmsim.Citation(
     reasons={stdgrimmsim.CiteReason.MUT_RATE, stdgrimmsim.CiteReason.REC_RATE},
 )
 
-_recombination_rate = {c: 2.4e-8 for c in genome_data.data["chromosomes"]}
+_recombination_rate = {c: 3.5e-8 for c in genome_data.data["chromosomes"]}
 _recombination_rate["valkyrja_mitogenome"] = 0
-_mutation_rate = {c: 2.2e-8 for c in genome_data.data["chromosomes"]}
+_mutation_rate = {c: 1.2e-9 for c in genome_data.data["chromosomes"]}
 _mutation_rate["valkyrja_mitogenome"] = 7.5e-8
 _species_ploidy = 2
 _ploidy = {c: _species_ploidy for c in genome_data.data["chromosomes"]}
